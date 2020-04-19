@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.902
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OENIK_PROG4_2020_1_A2ETR7_SCE1EH", "OENIK_PROG4_2020_1_A2ETR7_SCE1EH\OENIK_PROG4_2020_1_A2ETR7_SCE1EH.csproj", "{183D8E79-371F-4A5C-836B-442251E8040E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{183D8E79-371F-4A5C-836B-442251E8040E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{183D8E79-371F-4A5C-836B-442251E8040E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{183D8E79-371F-4A5C-836B-442251E8040E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{183D8E79-371F-4A5C-836B-442251E8040E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9D992B89-67B8-41F8-8CE6-599DDA24AAFF}
+	EndGlobalSection
+EndGlobal
