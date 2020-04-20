@@ -6,7 +6,5 @@
         xmlns:local="clr-namespace:OENIK_PROG4_2020_1_A2ETR7_SCE1EH"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <local:Control></local:Control>
 </Window>
