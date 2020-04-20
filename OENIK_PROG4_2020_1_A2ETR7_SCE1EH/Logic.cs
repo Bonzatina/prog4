@@ -32,7 +32,7 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
             model.level.groundLine.area.Transform = tg;
             model.level.groundLine.area = model.level.groundLine.area.GetFlattenedPathGeometry();
 
-            model.level.specialItems.ForEach(item => {
+            model.level.specialItems?.ForEach(item => {
                 item.area.Transform = tg;
                 item.area = item.area.GetFlattenedPathGeometry();
             });

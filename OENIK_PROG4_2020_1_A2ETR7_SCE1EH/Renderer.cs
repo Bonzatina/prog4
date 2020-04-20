@@ -21,16 +21,15 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
 
         public void BuildDisplay(DrawingContext ctx)
         {
-            //DrawBackground(ctx);
+            DrawBackground(ctx);
             DrawLevel(ctx);
             DrawPlayer(ctx);
         }
 
         private void DrawLevel(DrawingContext ctx)
         {
-            ctx.DrawGeometry(Brushes.White, new Pen(Brushes.Black, 2), model.level.RealArea);
             ctx.DrawGeometry(Brushes.Black, new Pen(Brushes.Black, 2), model.level.groundLine.RealArea);
-            model.level.specialItems.ForEach(item => ctx.DrawGeometry(item.brush, item.pen, item.RealArea));
+            model.level.specialItems?.ForEach(item => ctx.DrawGeometry(item.brush, item.pen, item.RealArea));
         }
 
         private void DrawPlayer(DrawingContext ctx)
@@ -38,9 +37,9 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
             ctx.DrawGeometry(null, new Pen(Brushes.Black, 3), model.player.RealArea);
         }
 
-        //private void DrawBackground(DrawingContext ctx)
-        //{
-        //    ctx.DrawRectangle(Brushes.White, null, bgRect);
-        //}
+        private void DrawBackground(DrawingContext ctx)
+        {
+            ctx.DrawRectangle(Brushes.White, null, bgRect);
+        }
     }
 }

@@ -27,8 +27,6 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
         }
         public PathGeometry CombinedGeos(GameItem other)
         {
-            //Geometry geo = Geometry.Combine(this.RealArea, other.RealArea, GeometryCombineMode.Intersect, null);
-            //Console.WriteLine(geo.GetFlattenedPathGeometry());
             return Geometry.Combine(this.RealArea, other.RealArea, GeometryCombineMode.Intersect, null).GetFlattenedPathGeometry();
         }
     }

@@ -42,15 +42,26 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            PathGeometry combGeo = model.level.groundLine.CombinedGeos(model.player);
+            PathGeometry combGeoPlayerVSGround = model.level.groundLine.CombinedGeos(model.player);
+            SpecialItem toRemove = null;
+            model.level.specialItems?.ForEach(item =>
+            {
+                PathGeometry combGeoPlayerVSSpecialItem = item.CombinedGeos(model.player);
+                if (combGeoPlayerVSSpecialItem.GetArea() > 0)
+                {
+                    toRemove = item;
+                    Console.WriteLine("  GOT ITTTTT -----------");
+                }
+            });
+            model.level.specialItems?.Remove(toRemove);
 
-            if (combGeo.GetArea() == 0)
+            if (combGeoPlayerVSGround.GetArea() == 0)
             {
                 model.player.CY += 10;
             }
-            else if (combGeo.GetArea() > 0)
+            else if (combGeoPlayerVSGround.GetArea() > 0)
             {
-                model.player.CY = combGeo.Bounds.Top - 48;
+                model.player.CY = combGeoPlayerVSGround.Bounds.Top - 48;
 
             }
             if (model.player.CY > model.GameHeight)

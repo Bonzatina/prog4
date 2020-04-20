@@ -25,7 +25,7 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
             List<SpecialItem> specialItems = new List<SpecialItem>();
             specialItems.Add(new SpecialItem(0, ZeroAxios, Brushes.Green, new Pen(Brushes.Black, 2), new RectangleGeometry(new Rect(220, -100, 20, 30))));
             specialItems.Add(new SpecialItem(0, ZeroAxios, Brushes.Red, new Pen(Brushes.Black, 2), new EllipseGeometry(new Rect(700, -80, 20, 30))));
-            level = new Level(new RectangleGeometry(new Rect(0, 0, GameWidth, GameHeight)), new GroundLine(0, ZeroAxios), specialItems);
+            level = new Level(new GroundLine(0, ZeroAxios), specialItems);
         }
     }
 }
