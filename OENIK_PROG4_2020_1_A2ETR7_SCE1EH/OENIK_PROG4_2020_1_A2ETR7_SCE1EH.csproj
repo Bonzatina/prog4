@@ -59,6 +59,7 @@
     <Compile Include="GameItem.cs" />
     <Compile Include="GroundLine.cs" />
     <Compile Include="Level.cs" />
+    <Compile Include="LevelsResourses.cs" />
     <Compile Include="Logic.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Renderer.cs" />

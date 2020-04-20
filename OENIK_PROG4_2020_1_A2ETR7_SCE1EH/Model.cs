@@ -12,7 +12,7 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
     {
         public double GameWidth { get; private set; }
         public double GameHeight { get; private set; }
-        public int ZeroAxios { get; private set; }
+        public static int ZeroAxios { get; private set; }
         public Player player;
         public Level level;
 
@@ -22,10 +22,9 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
             GameHeight = h;
             ZeroAxios = (int)h / 2;
             player = new Player(10,10);
-            List<SpecialItem> specialItems = new List<SpecialItem>();
-            specialItems.Add(new SpecialItem(0, ZeroAxios, Brushes.Green, new Pen(Brushes.Black, 2), new RectangleGeometry(new Rect(220, -100, 20, 30))));
-            specialItems.Add(new SpecialItem(0, ZeroAxios, Brushes.Red, new Pen(Brushes.Black, 2), new EllipseGeometry(new Rect(700, -80, 20, 30))));
-            level = new Level(new GroundLine(0, ZeroAxios), specialItems);
+         
+            LevelsResourses resourses = new LevelsResourses();
+            level = resourses.levels["level_1"];
         }
     }
 }
