@@ -22,27 +22,8 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
                 {
                     g.Children.Add(new LineGeometry(slice[i], slice[i + 1]));
                 }
-            }
-            
-          
-
-           
-
-            
-            //g.Children.Add(new LineGeometry(p1, p2));
-            //g.Children.Add(new LineGeometry(p2, p3));
-            //g.Children.Add(new LineGeometry(p3, p4));
-            //g.Children.Add(new LineGeometry(p4, p5));
-            //g.Children.Add(new LineGeometry(p6, p7));
+            }         
             area = g.GetWidenedPathGeometry(new Pen(Brushes.Black, 2));
-
-  
-            
-        }
-
-        public void Rotate()
-        {
-            //area.Transform = new RotateTransform(50, CX, CY);
         }
     }
 }
