@@ -1,0 +1,9 @@
+lives - /backend - add Lives prop to Player Model. add +/- live functions to GameLogic. /frontend - add lives on game screen. 
+
+specialItems - /backend - rework specialItems creation, implement specialItemstypes with different actions on colission with player, add two specialItems with actions +/- live.  /frontend - handle +/- live on colisions.
+
+enemies - /backend - add Emeny class to Model lib. Implement adding list of Enemies to Level instance. Impelement EnemyDestroy function in Logic to remove enemy from List. /frontend - implement rendering Enemies.
+
+bullets - ....
+
+levels - /backend and /frotnend - rework level creation. impelement changing levels... implement what needed ...
