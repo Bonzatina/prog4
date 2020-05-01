@@ -38,5 +38,26 @@ namespace Logic
                 item.area = item.area.GetFlattenedPathGeometry();
             });
         }
+
+        public void IncreasePlayerLife()
+        {
+            model.player.Lives++;
+        }
+
+        public void DecreasePlayerLife()
+        {
+            if (model.player.Lives > 0)
+            {
+                model.player.Lives--;
+            }
+        }
+
+        public void SetLivesOfPlayerTo(int numberOfLives)
+        {
+            if (numberOfLives >= 0)
+            {
+                model.player.Lives = numberOfLives;
+            }
+        }
     }
 }
