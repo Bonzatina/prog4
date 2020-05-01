@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Logic;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
     class Control : FrameworkElement
     {
         GameModel model;
-        Logic logic;
+        GameLogic logic;
         Renderer renderer;
         DispatcherTimer timer;
 
@@ -26,7 +27,7 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
         private void Control_Loaded(object sender, RoutedEventArgs e)
         {
             model = new GameModel(ActualWidth, ActualHeight);
-            logic = new Logic(model);
+            logic = new GameLogic(model);
             renderer = new Renderer(model);
             Window win = Window.GetWindow(this);
             if (win != null)

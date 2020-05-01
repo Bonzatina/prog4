@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OENIK_PROG4_2020_1_A2ETR7_S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{FA8FCEBA-F632-436F-886D-1351049B7F9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{97977C44-3C08-45E9-943B-4AE926D19B5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FA8FCEBA-F632-436F-886D-1351049B7F9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA8FCEBA-F632-436F-886D-1351049B7F9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA8FCEBA-F632-436F-886D-1351049B7F9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97977C44-3C08-45E9-943B-4AE926D19B5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97977C44-3C08-45E9-943B-4AE926D19B5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97977C44-3C08-45E9-943B-4AE926D19B5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97977C44-3C08-45E9-943B-4AE926D19B5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

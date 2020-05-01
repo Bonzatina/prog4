@@ -1,18 +1,18 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
-using Model;
 
-namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
+namespace Logic
 {
-    enum Direction { Left, Right}
-    class Logic
+    public enum Direction { Left, Right }
+    public class GameLogic
     {
         GameModel model;
-        public Logic(GameModel model)
+        public GameLogic(GameModel model)
         {
             this.model = model;
         }
