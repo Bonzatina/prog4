@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,10 +11,10 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
 {
     class Renderer
     {
-        Model model;
+        GameModel model;
         public Rect bgRect;
 
-        public Renderer(Model model)
+        public Renderer(GameModel model)
         {
             this.model = model;
             bgRect = new Rect(0, 0, model.GameWidth, model.GameHeight);

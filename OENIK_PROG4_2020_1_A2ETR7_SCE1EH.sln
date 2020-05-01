@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.902
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OENIK_PROG4_2020_1_A2ETR7_SCE1EH", "OENIK_PROG4_2020_1_A2ETR7_SCE1EH\OENIK_PROG4_2020_1_A2ETR7_SCE1EH.csproj", "{183D8E79-371F-4A5C-836B-442251E8040E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{FA8FCEBA-F632-436F-886D-1351049B7F9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{183D8E79-371F-4A5C-836B-442251E8040E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{183D8E79-371F-4A5C-836B-442251E8040E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{183D8E79-371F-4A5C-836B-442251E8040E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA8FCEBA-F632-436F-886D-1351049B7F9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA8FCEBA-F632-436F-886D-1351049B7F9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA8FCEBA-F632-436F-886D-1351049B7F9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA8FCEBA-F632-436F-886D-1351049B7F9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

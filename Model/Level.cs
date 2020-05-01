@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
-namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
+namespace Model
 {
-    class Level 
+    public class Level 
     {
         public GroundLine groundLine;
         public List<SpecialItem> specialItems;

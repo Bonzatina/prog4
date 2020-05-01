@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
-namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
+namespace Model
 {
-    class Player : GameItem
+    public class Player : GameItem
     {        
         public Player(double cx, double cy)
         {

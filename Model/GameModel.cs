@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Media;
 
-namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
+namespace Model
 {
-    class Model
+    public class GameModel
     {
         public double GameWidth { get; private set; }
         public double GameHeight { get; private set; }
@@ -16,13 +14,13 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
         public Player player;
         public Level level;
 
-        public Model(double w, double h)
+        public GameModel(double w, double h)
         {
             GameWidth = w;
             GameHeight = h;
             ZeroAxios = (int)h / 2;
-            player = new Player(10,10);
-         
+            player = new Player(10, 10);
+
             LevelsResourses resourses = new LevelsResourses();
             level = resourses.levels["level_1"];
         }

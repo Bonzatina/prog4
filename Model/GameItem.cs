@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
+namespace Model
 {
-    abstract class GameItem
+    public abstract class GameItem
     {
         public Geometry area;
 

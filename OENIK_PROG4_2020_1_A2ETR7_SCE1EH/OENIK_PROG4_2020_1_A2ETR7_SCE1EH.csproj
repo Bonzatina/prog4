@@ -56,14 +56,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Control.cs" />
-    <Compile Include="GameItem.cs" />
-    <Compile Include="GroundLine.cs" />
-    <Compile Include="Level.cs" />
-    <Compile Include="LevelsResourses.cs" />
     <Compile Include="Logic.cs" />
-    <Compile Include="Player.cs" />
     <Compile Include="Renderer.cs" />
-    <Compile Include="SpecialItem.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -78,7 +72,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -103,6 +96,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{fa8fceba-f632-436f-886d-1351049b7f9c}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

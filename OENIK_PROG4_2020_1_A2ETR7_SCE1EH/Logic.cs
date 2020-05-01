@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using Model;
 
 namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
 {
     enum Direction { Left, Right}
     class Logic
     {
-        Model model;
-        public Logic(Model model)
+        GameModel model;
+        public Logic(GameModel model)
         {
             this.model = model;
         }
