@@ -56,7 +56,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Control.cs" />
-    <Compile Include="Renderer.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -104,6 +103,10 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{fa8fceba-f632-436f-886d-1351049b7f9c}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Renderer\Renderer.csproj">
+      <Project>{94727746-aeb9-4159-8a9c-1ae9d247caca}</Project>
+      <Name>Renderer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

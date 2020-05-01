@@ -1,5 +1,6 @@
 ﻿using Logic;
 using Model;
+using Renderer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
     {
         GameModel model;
         GameLogic logic;
-        Renderer renderer;
+        GameRenderer renderer;
         DispatcherTimer timer;
 
         public Control()
@@ -28,7 +29,7 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
         {
             model = new GameModel(ActualWidth, ActualHeight);
             logic = new GameLogic(model);
-            renderer = new Renderer(model);
+            renderer = new GameRenderer(model);
             Window win = Window.GetWindow(this);
             if (win != null)
             {

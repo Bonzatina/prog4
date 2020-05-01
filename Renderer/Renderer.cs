@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
-namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
+namespace Renderer
 {
-    class Renderer
+    public class GameRenderer
     {
         GameModel model;
         public Rect bgRect;
 
-        public Renderer(GameModel model)
+        public GameRenderer(GameModel model)
         {
             this.model = model;
             bgRect = new Rect(0, 0, model.GameWidth, model.GameHeight);
