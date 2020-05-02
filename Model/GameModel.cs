@@ -19,7 +19,10 @@ namespace Model
             GameWidth = w;
             GameHeight = h;
             ZeroAxios = (int)h / 2;
-            player = new Player(10, 10);
+            player = new Player(10, 10)
+            {
+                Lives = 3
+            };
 
             LevelsResourses resourses = new LevelsResourses();
             level = resourses.levels["level_1"];

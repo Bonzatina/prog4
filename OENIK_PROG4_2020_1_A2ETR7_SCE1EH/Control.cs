@@ -71,6 +71,7 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
                 MessageBox.Show("Fail!");
                 model.player.CX = 10;
                 model.player.CY = 10;
+                logic.DecreasePlayerLife();
             }
             InvalidateVisual();
         }

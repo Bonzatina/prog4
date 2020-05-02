@@ -13,6 +13,7 @@ namespace Renderer
     {
         GameModel model;
         public Rect bgRect;
+        public int livesCounter;
 
         public GameRenderer(GameModel model)
         {
@@ -31,6 +32,11 @@ namespace Renderer
         {
             ctx.DrawGeometry(Brushes.Black, new Pen(Brushes.Black, 2), model.level.groundLine.RealArea);
             model.level.specialItems?.ForEach(item => ctx.DrawGeometry(item.brush, item.pen, item.RealArea));
+            Console.WriteLine(model.player.Lives);
+            for (int i = 0; i < model.player.Lives; i++)
+            {
+                ctx.DrawGeometry(Brushes.Red, new Pen(Brushes.Brown, 2), new EllipseGeometry(new Rect(i* 25, 7, 20, 20)));
+            }
         }
 
         private void DrawPlayer(DrawingContext ctx)
