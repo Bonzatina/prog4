@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace Model
 {
-    public class SpecialItem : GameItem
+    public class SpecialItem : GameItem, ISpecialItem
     {
         public Brush brush;
         public Pen pen;
@@ -20,6 +20,11 @@ namespace Model
             this.brush = brush;
             this.pen = pen;
             this.area = area;
+        }
+
+        public virtual void OnPlayerPickUp(Player player)
+        {
+
         }
     }
 }

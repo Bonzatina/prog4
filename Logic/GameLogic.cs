@@ -59,5 +59,10 @@ namespace Logic
                 model.player.Lives = numberOfLives;
             }
         }
+
+        public void OnPlayerPickUpItem(SpecialItem item)
+        {
+            item.OnPlayerPickUp(model.player);
+        }
     }
 }
