@@ -1,4 +1,5 @@
 lives - /backend - add Lives prop to Player Model. add +/- live functions to GameLogic. /frontend - add lives on game screen. 
+--DONE
 
 specialItems - /backend - rework specialItems creation, implement specialItemstypes with different actions on colission with player, add two specialItems with actions +/- live.  /frontend - handle +/- live on colisions.
 

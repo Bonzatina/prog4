@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace Model.GameItems
+namespace Model
 {
     public class DecreaseHealthItem : SpecialItem
     {
@@ -17,6 +17,7 @@ namespace Model.GameItems
             get { return lives; }
             set
             {
+                // TODO: fix here
                 if (value < 0) throw new ArgumentException("Decreasing health pickup item cannot be positive.", nameof(Lives));
                 else lives = value;
             }
@@ -30,7 +31,8 @@ namespace Model.GameItems
 
         public override void OnPlayerPickUp(Player player)
         {
-            player.Lives += this.Lives;
+            // TODO: fix here
+            player.Lives -= this.Lives;
         }
     }
 }

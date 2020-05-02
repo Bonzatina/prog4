@@ -53,6 +53,7 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
                 if (combGeoPlayerVSSpecialItem.GetArea() > 0)
                 {
                     toRemove = item;
+                    item.OnPlayerPickUp(model.player);
                 }
             });
             model.level.specialItems?.Remove(toRemove);
