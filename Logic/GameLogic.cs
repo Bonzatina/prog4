@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace Logic
 {
-    public enum Direction { Left, Right }
+    public enum Direction { Left, Right, Up, Down }
     public class GameLogic
     {
         GameModel model;
@@ -23,7 +23,18 @@ namespace Logic
             {
                 model.player.CX += 10;
             }
-            else model.player.CX -= 10;
+            if (dir == Direction.Left)
+            {
+                model.player.CX -= 10;
+            }
+            if (dir == Direction.Up)
+            {
+
+            }
+            if (dir == Direction.Down)
+            {
+                model.player.CY += 10;
+            }
         }
 
         public void RotateLevel()

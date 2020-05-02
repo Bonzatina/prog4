@@ -53,23 +53,25 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
                 if (combGeoPlayerVSSpecialItem.GetArea() > 0)
                 {
                     toRemove = item;
-                    item.OnPlayerPickUp(model.player);
+                    logic.OnPlayerPickUpItem(item);
                 }
             });
             model.level.specialItems?.Remove(toRemove);
 
             if (combGeoPlayerVSGround.GetArea() == 0)
             {
-                model.player.CY += 10;
+                logic.MovePlayer(Direction.Down);
             }
             else if (combGeoPlayerVSGround.GetArea() > 0)
             {
+                //TODO use logic not model here
                 model.player.CY = combGeoPlayerVSGround.Bounds.Top - 48;
 
             }
             if (model.player.CY > model.GameHeight)
             {
                 MessageBox.Show("Fail!");
+                //TODO impement respawn method in GameLogic
                 model.player.CX = 10;
                 model.player.CY = 10;
                 logic.DecreasePlayerLife();
