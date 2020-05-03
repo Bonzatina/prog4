@@ -17,8 +17,7 @@ namespace Model
             get { return lives; }
             set
             {
-                // TODO: fix here
-                if (value < 0) throw new ArgumentException("Decreasing health pickup item cannot be positive.", nameof(Lives));
+                if (value > 0) throw new ArgumentException("Decreasing health pickup item cannot be negative.", nameof(Lives));
                 else lives = value;
             }
         }
@@ -31,8 +30,7 @@ namespace Model
 
         public override void OnPlayerPickUp(Player player)
         {
-            // TODO: fix here
-            player.Lives -= this.Lives;
+            player.Lives += this.Lives;
         }
     }
 }
