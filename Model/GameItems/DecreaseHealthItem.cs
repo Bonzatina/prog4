@@ -17,7 +17,7 @@ namespace Model
             get { return lives; }
             set
             {
-                if (value > 0) throw new ArgumentException("Decreasing health pickup item cannot be negative.", nameof(Lives));
+                if (value < 0) throw new ArgumentException("Decreasing health pickup item cannot be negative.", nameof(Lives));
                 else lives = value;
             }
         }
