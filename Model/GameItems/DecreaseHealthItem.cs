@@ -30,7 +30,7 @@ namespace Model
 
         public override void OnPlayerPickUp(Player player)
         {
-            player.Lives += this.Lives;
+            player.Lives -= this.Lives;
         }
     }
 }
