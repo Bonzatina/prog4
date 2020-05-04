@@ -9,7 +9,6 @@ namespace Model
 {
     public class DecreaseHealthItem : SpecialItem
     {
-
         private int lives;
 
         public int Lives

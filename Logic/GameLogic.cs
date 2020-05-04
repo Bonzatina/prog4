@@ -75,5 +75,52 @@ namespace Logic
         {
             item.OnPlayerPickUp(model.player);
         }
+
+        public List<Enemy> GetAllEnemies()
+        {
+            return model.level.enemies;
+        }
+
+        public void AddEnemy(Enemy enemy)
+        {
+            model.level.enemies.ToList().Add(enemy);
+        }
+
+        public void AddEnemies(List<Enemy> enemies)
+        {
+            foreach(Enemy item in enemies)
+            {
+                this.AddEnemy(item);
+            }
+        }
+
+        public bool RemoveEnemy(Enemy enemy) // returns false if enemy was not found.
+        {
+            if (model.level.enemies.Contains(enemy))
+            {
+                model.level.enemies.ToList().Remove(enemy);
+                return true;
+            }
+            return false;
+        }
+
+        public bool RemoveEnemies(List<Enemy> enemies) // if ANY of the enemies was not found, at the end of the process, output will be false;
+        {
+            bool output = false;
+            foreach(Enemy item in enemies)
+            {
+                output = false;
+                if (this.RemoveEnemy(item))
+                {
+                    output = true;
+                }
+            }
+            return output;
+        }
+
+        public void RemoveAllEnemies()
+        {
+            model.level.enemies.Clear();
+        }
     }
 }

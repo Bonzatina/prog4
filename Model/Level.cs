@@ -12,6 +12,7 @@ namespace Model
     {
         public GroundLine groundLine;
         public List<SpecialItem> specialItems;
+        public List<Enemy> enemies;
         public Level(GroundLine groundLine, List<SpecialItem> specialItems = null)
         {
             this.specialItems = specialItems;

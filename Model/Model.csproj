@@ -44,6 +44,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enemies\BossEnemy.cs" />
+    <Compile Include="Enemies\Enemy.cs" />
+    <Compile Include="Enemies\MediumEnemy.cs" />
+    <Compile Include="Enemies\SmallEnemy.cs" />
     <Compile Include="GameItems\DecreaseHealthItem.cs" />
     <Compile Include="GameItems\GameItem.cs" />
     <Compile Include="GameItems\ISpecialItem.cs" />
