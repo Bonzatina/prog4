@@ -50,7 +50,7 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
             model.level.specialItems?.ForEach(item =>
             {
                 PathGeometry combGeoPlayerVSSpecialItem = item.CombinedGeos(model.player);
-                if (combGeoPlayerVSSpecialItem.GetArea() > 0)
+                if (combGeoPlayerVSSpecialItem.GetArea() > 10)
                 {
                     toRemove = item;
                     logic.OnPlayerPickUpItem(item);
