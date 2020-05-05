@@ -2,8 +2,11 @@ lives - /backend - add Lives prop to Player Model. add +/- live functions to Gam
 --DONE
 
 specialItems - /backend - rework specialItems creation, implement specialItemstypes with different actions on colission with player, add two specialItems with actions +/- live.  /frontend - handle +/- live on colisions.
+--DONE
 
 enemies - /backend - add Emeny class to Model lib. Implement adding list of Enemies to Level instance. Impelement EnemyDestroy function in Logic to remove enemy from List. /frontend - implement rendering Enemies.
+
+player - /backend - move changing position of player to logic. Implement respwan method. Move what needed from Control to Logic.
 
 bullets - ....
 
