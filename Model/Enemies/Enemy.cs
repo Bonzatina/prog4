@@ -29,13 +29,12 @@ namespace Model
             }
         }
 
-        public Enemy(double cx, double cy, int health) // different shapes & colors for enemies? (bossEnemy, mediumEnemy, smallEnemy)
+        public Enemy(double cx, double cy, int health, Geometry area) // different shapes & colors for enemies? (bossEnemy, mediumEnemy, smallEnemy)
         {
             this.CX = cx;
             this.CY = cy;
             this.Health = health;
-            GeometryGroup g = new GeometryGroup();
-            area = new RectangleGeometry(new Rect(0, 0, 10, 50));
+            this.area = area;
         }
 
         public void Move(int dx, int dy)

@@ -37,7 +37,7 @@ namespace Model
                 .GetWidenedPathGeometry(new Pen(Brushes.Black, 2))));
 
             List<Enemy> enemies = new List<Enemy>();
-            enemies.Add(new MediumEnemy(500,120));
+            enemies.Add(new MediumEnemy(500,120, GameShapes.gameShapes["mediumEnemy"]));
 
 
             levels.Add("level_1", new Level(new GroundLine(0, GameModel.ZeroAxios, grounds), specialItems, enemies));
@@ -60,6 +60,12 @@ namespace Model
 
             Geometry plusOneLiveShape = new EllipseGeometry(new Rect(0, -100, 20, 30));
             gameShapes.Add("plusOneLiveShape", plusOneLiveShape);
+
+            GeometryGroup mediumEnemyShape = new GeometryGroup();
+            mediumEnemyShape.Children.Add(new EllipseGeometry(new Rect(0, 0, 10, 50)));
+            gameShapes.Add("mediumEnemy", mediumEnemyShape);
+            //new RectangleGeometry(new Rect(0, 0, 10, 50))
+
         }
     }
 }
