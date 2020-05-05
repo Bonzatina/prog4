@@ -36,7 +36,7 @@ namespace Renderer
             Console.WriteLine(model.level.enemies);
             for (int i = 0; i < model.player.Lives; i++)
             {
-                ctx.DrawGeometry(Brushes.Red, new Pen(Brushes.Brown, 2), new EllipseGeometry(new Rect(i* 25, 7, 20, 20)));
+                ctx.DrawGeometry(Brushes.BlueViolet, new Pen(Brushes.Brown, 2), new EllipseGeometry(new Rect(i* 25, 7, 20, 20)));
             }
         }
 

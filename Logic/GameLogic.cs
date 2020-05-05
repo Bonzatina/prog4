@@ -48,6 +48,10 @@ namespace Logic
                 item.area.Transform = tg;
                 item.area = item.area.GetFlattenedPathGeometry();
             });
+            model.level.enemies?.ForEach(enemy => {
+                enemy.area.Transform = tg;
+                enemy.area = enemy.area.GetFlattenedPathGeometry();
+            });
         }
 
         public void IncreasePlayerLife()
