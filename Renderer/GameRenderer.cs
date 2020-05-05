@@ -32,7 +32,8 @@ namespace Renderer
         {
             ctx.DrawGeometry(Brushes.Black, new Pen(Brushes.Black, 2), model.level.groundLine.RealArea);
             model.level.specialItems?.ForEach(item => ctx.DrawGeometry(item.brush, item.pen, item.RealArea));
-            Console.WriteLine(model.player.Lives);
+            model.level.enemies?.ForEach(item => ctx.DrawGeometry(Brushes.Red, new Pen(Brushes.Black, 2), item.RealArea));
+            Console.WriteLine(model.level.enemies);
             for (int i = 0; i < model.player.Lives; i++)
             {
                 ctx.DrawGeometry(Brushes.Red, new Pen(Brushes.Brown, 2), new EllipseGeometry(new Rect(i* 25, 7, 20, 20)));

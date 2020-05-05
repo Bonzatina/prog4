@@ -13,10 +13,11 @@ namespace Model
         public GroundLine groundLine;
         public List<SpecialItem> specialItems;
         public List<Enemy> enemies;
-        public Level(GroundLine groundLine, List<SpecialItem> specialItems = null)
+        public Level(GroundLine groundLine, List<SpecialItem> specialItems = null, List<Enemy> enemies = null)
         {
             this.specialItems = specialItems;
             this.groundLine = groundLine;
+            this.enemies = enemies;
         }
     }
 }

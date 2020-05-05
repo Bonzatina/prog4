@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Enemies;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,9 +33,14 @@ namespace Model
             List<SpecialItem> specialItems = new List<SpecialItem>();
             //specialItems.Add(new SpecialItem(0, GameModel.ZeroAxios, Brushes.Green, new Pen(Brushes.Black, 2), new RectangleGeometry(new Rect(220, -100, 20, 30))));
             specialItems.Add(new IncreaseHealthItem(1, 220, GameModel.ZeroAxios, Brushes.Red, new Pen(Brushes.Black, 2), GameShapes.gameShapes["plusOneLiveShape"]));
-            specialItems.Add(new DecreaseHealthItem(1, 700, GameModel.ZeroAxios, Brushes.Red, new Pen(Brushes.Black, 2), GameShapes.gameShapes["spikesShape"].GetWidenedPathGeometry(new Pen(Brushes.Black, 2))));
+            specialItems.Add(new DecreaseHealthItem(1, 700, GameModel.ZeroAxios, Brushes.Red, new Pen(Brushes.Black, 2), GameShapes.gameShapes["spikesShape"]
+                .GetWidenedPathGeometry(new Pen(Brushes.Black, 2))));
 
-            levels.Add("level_1", new Level(new GroundLine(0, GameModel.ZeroAxios, grounds), specialItems));
+            List<Enemy> enemies = new List<Enemy>();
+            enemies.Add(new MediumEnemy(500,120));
+
+
+            levels.Add("level_1", new Level(new GroundLine(0, GameModel.ZeroAxios, grounds), specialItems, enemies));
         }
     }
 
