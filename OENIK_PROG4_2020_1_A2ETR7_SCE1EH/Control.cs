@@ -58,6 +58,19 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
             });
             model.level.specialItems?.Remove(toRemove);
 
+            model.level.enemies?.ForEach(enemy =>
+            {
+                //enemy.CY += 10;
+                PathGeometry combGeoPlayerVSSpecialItem = enemy.CombinedGeos(model.player);
+                if (combGeoPlayerVSSpecialItem.GetArea() > 0)
+                {
+                    // TODO move CX, CY asignments to logic
+                    logic.DecreasePlayerLife();
+                    model.player.CX = 10;
+                    model.player.CY = 10;
+                }
+            });
+
             if (combGeoPlayerVSGround.GetArea() == 0)
             {
                 logic.MovePlayer(Direction.Down);
