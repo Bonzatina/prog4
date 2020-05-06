@@ -45,9 +45,9 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            PathGeometry combGeoPlayerVSGround = model.level.groundLine.CombinedGeos(model.player);
+            PathGeometry combGeoPlayerVSGround = model.screen.groundLine.CombinedGeos(model.player);
             SpecialItem toRemove = null;
-            model.level.specialItems?.ForEach(item =>
+            model.screen.specialItems?.ForEach(item =>
             {
                 PathGeometry combGeoPlayerVSSpecialItem = item.CombinedGeos(model.player);
                 if (combGeoPlayerVSSpecialItem.GetArea() > 10)
@@ -56,9 +56,9 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
                     logic.OnPlayerPickUpItem(item);
                 }
             });
-            model.level.specialItems?.Remove(toRemove);
+            model.screen.specialItems?.Remove(toRemove);
 
-            model.level.enemies?.ForEach(enemy =>
+            model.screen.enemies?.ForEach(enemy =>
             {
                 //enemy.CY += 10;
                 PathGeometry combGeoPlayerVSSpecialItem = enemy.CombinedGeos(model.player);

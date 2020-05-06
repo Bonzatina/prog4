@@ -11,10 +11,11 @@ namespace Model
 {
     class LevelsResourses
     {
-        public Dictionary<string, Level> levels = new Dictionary<string, Level>();
+        public Dictionary<string, Screen> screens = new Dictionary<string, Screen>();
         public LevelsResourses()
         {  
-            Point[] oneSlice = new Point[]{
+            // first screen
+            Point[] oneSlice1 = new Point[]{
                 new Point(0, 0),
                 new Point(150, 0),
                 new Point(200, 100),
@@ -22,25 +23,37 @@ namespace Model
                 new Point(850, -80),
             };
 
-            Point[] secondSlice = new Point[]
+            Point[] secondSlice1 = new Point[]
             {
                 new Point(200, -100),
                 new Point(250, -100),
             };
-            Point[][] grounds = new Point[][] { oneSlice, secondSlice };
+            Point[][] grounds1 = new Point[][] { oneSlice1, secondSlice1 };
 
             
-            List<SpecialItem> specialItems = new List<SpecialItem>();
+            List<SpecialItem> specialItems1 = new List<SpecialItem>();
             //specialItems.Add(new SpecialItem(0, GameModel.ZeroAxios, Brushes.Green, new Pen(Brushes.Black, 2), new RectangleGeometry(new Rect(220, -100, 20, 30))));
-            specialItems.Add(new IncreaseHealthItem(1, 220, GameModel.ZeroAxios, Brushes.BlueViolet, new Pen(Brushes.Black, 2), GameShapes.gameShapes["plusOneLiveShape"]));
-            specialItems.Add(new DecreaseHealthItem(1, 700, GameModel.ZeroAxios, Brushes.Red, new Pen(Brushes.Black, 2), GameShapes.gameShapes["spikesShape"]
-                .GetWidenedPathGeometry(new Pen(Brushes.Black, 2))));
+            specialItems1.Add(new IncreaseHealthItem(1, 220, GameModel.ZeroAxios, Brushes.BlueViolet, new Pen(Brushes.Black, 2), GameShapes.gameShapes["plusOneLiveShape"]));
+            specialItems1.Add(new DecreaseHealthItem(1, 700, GameModel.ZeroAxios, Brushes.Red, new Pen(Brushes.Black, 2), GameShapes.gameShapes["spikesShape"]
+                ));
 
-            List<Enemy> enemies = new List<Enemy>();
-            enemies.Add(new MediumEnemy(500, GameModel.ZeroAxios, GameShapes.gameShapes["mediumEnemy"]));
+            List<Enemy> enemies1 = new List<Enemy>();
+            enemies1.Add(new MediumEnemy(500, GameModel.ZeroAxios, GameShapes.gameShapes["mediumEnemy"]));
+
+            screens.Add("screen_1", new Screen(new GroundLine(0, GameModel.ZeroAxios, grounds1), specialItems1, enemies1));
 
 
-            levels.Add("level_1", new Level(new GroundLine(0, GameModel.ZeroAxios, grounds), specialItems, enemies));
+            // second screen
+            Point[] oneSlice2 = new Point[]{
+                new Point(0, 0),
+                new Point(150, 0),
+       
+            };
+            Point[][] grounds2 = new Point[][] { oneSlice2 };
+
+            screens.Add("screen_2", new Screen(new GroundLine(0, GameModel.ZeroAxios, grounds2)));
+
+
         }
     }
 
@@ -56,7 +69,7 @@ namespace Model
             spikesShape.Children.Add(new LineGeometry(new Point(15, -60), new Point(20, -80)));
             spikesShape.Children.Add(new LineGeometry(new Point(20, -80), new Point(25, -60)));
             spikesShape.Children.Add(new LineGeometry(new Point(25, -60), new Point(30, -80)));
-            gameShapes.Add("spikesShape", spikesShape);
+            gameShapes.Add("spikesShape", spikesShape.GetWidenedPathGeometry(new Pen(Brushes.Black, 2)));
 
             Geometry plusOneLiveShape = new EllipseGeometry(new Rect(0, -100, 20, 30));
             gameShapes.Add("plusOneLiveShape", plusOneLiveShape);

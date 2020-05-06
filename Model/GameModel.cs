@@ -12,7 +12,7 @@ namespace Model
         public double GameHeight { get; private set; }
         public static int ZeroAxios { get; private set; }
         public Player player;
-        public Level level;
+        public Screen screen;
 
         public GameModel(double w, double h)
         {
@@ -25,7 +25,7 @@ namespace Model
             };
 
             LevelsResourses resourses = new LevelsResourses();
-            level = resourses.levels["level_1"];
+            screen = resourses.screens["screen_1"];
         }
     }
 }

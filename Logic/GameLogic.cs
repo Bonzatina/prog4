@@ -41,14 +41,14 @@ namespace Logic
         {
             TransformGroup tg = new TransformGroup();
             tg.Children.Add(new MatrixTransform(new Matrix(1, 0, 0, -1, 0, 0)));
-            model.level.groundLine.area.Transform = tg;
-            model.level.groundLine.area = model.level.groundLine.area.GetFlattenedPathGeometry();
+            model.screen.groundLine.area.Transform = tg;
+            model.screen.groundLine.area = model.screen.groundLine.area.GetFlattenedPathGeometry();
 
-            model.level.specialItems?.ForEach(item => {
+            model.screen.specialItems?.ForEach(item => {
                 item.area.Transform = tg;
                 item.area = item.area.GetFlattenedPathGeometry();
             });
-            model.level.enemies?.ForEach(enemy => {
+            model.screen.enemies?.ForEach(enemy => {
                 enemy.area.Transform = tg;
                 enemy.area = enemy.area.GetFlattenedPathGeometry();
             });
@@ -82,12 +82,12 @@ namespace Logic
 
         public List<Enemy> GetAllEnemies()
         {
-            return model.level.enemies;
+            return model.screen.enemies;
         }
 
         public void AddEnemy(Enemy enemy)
         {
-            model.level.enemies.ToList().Add(enemy);
+            model.screen.enemies.ToList().Add(enemy);
         }
 
         public void AddEnemies(List<Enemy> enemies)
@@ -100,9 +100,9 @@ namespace Logic
 
         public bool RemoveEnemy(Enemy enemy) // returns false if enemy was not found.
         {
-            if (model.level.enemies.Contains(enemy))
+            if (model.screen.enemies.Contains(enemy))
             {
-                model.level.enemies.ToList().Remove(enemy);
+                model.screen.enemies.ToList().Remove(enemy);
                 return true;
             }
             return false;
@@ -124,7 +124,7 @@ namespace Logic
 
         public void RemoveAllEnemies()
         {
-            model.level.enemies.Clear();
+            model.screen.enemies.Clear();
         }
     }
 }

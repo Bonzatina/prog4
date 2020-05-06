@@ -53,7 +53,7 @@
     <Compile Include="GameItems\ISpecialItem.cs" />
     <Compile Include="GroundLine.cs" />
     <Compile Include="GameItems\IncreaseHealthItem.cs" />
-    <Compile Include="Level.cs" />
+    <Compile Include="Screen.cs" />
     <Compile Include="LevelsResourses.cs" />
     <Compile Include="GameModel.cs" />
     <Compile Include="Player.cs" />

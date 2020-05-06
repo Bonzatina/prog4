@@ -30,10 +30,10 @@ namespace Renderer
 
         private void DrawLevel(DrawingContext ctx)
         {
-            ctx.DrawGeometry(Brushes.Black, new Pen(Brushes.Black, 2), model.level.groundLine.RealArea);
-            model.level.specialItems?.ForEach(item => ctx.DrawGeometry(item.brush, item.pen, item.RealArea));
-            model.level.enemies?.ForEach(item => ctx.DrawGeometry(Brushes.Red, new Pen(Brushes.Black, 2), item.RealArea));
-            Console.WriteLine(model.level.enemies);
+            ctx.DrawGeometry(Brushes.Black, new Pen(Brushes.Black, 2), model.screen.groundLine.RealArea);
+            model.screen.specialItems?.ForEach(item => ctx.DrawGeometry(item.brush, item.pen, item.RealArea));
+            model.screen.enemies?.ForEach(item => ctx.DrawGeometry(Brushes.Red, new Pen(Brushes.Black, 2), item.RealArea));
+            Console.WriteLine(model.player.Lives);
             for (int i = 0; i < model.player.Lives; i++)
             {
                 ctx.DrawGeometry(Brushes.BlueViolet, new Pen(Brushes.Brown, 2), new EllipseGeometry(new Rect(i* 25, 7, 20, 20)));

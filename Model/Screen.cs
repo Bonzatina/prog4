@@ -8,12 +8,12 @@ using System.Windows.Media;
 
 namespace Model
 {
-    public class Level 
+    public class Screen 
     {
         public GroundLine groundLine;
         public List<SpecialItem> specialItems;
         public List<Enemy> enemies;
-        public Level(GroundLine groundLine, List<SpecialItem> specialItems = null, List<Enemy> enemies = null)
+        public Screen(GroundLine groundLine, List<SpecialItem> specialItems = null, List<Enemy> enemies = null)
         {
             this.specialItems = specialItems;
             this.groundLine = groundLine;
