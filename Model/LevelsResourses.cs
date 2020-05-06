@@ -9,10 +9,10 @@ using System.Windows.Media;
 
 namespace Model
 {
-    class LevelsResourses
+    public static class LevelsResourses
     {
-        public Dictionary<string, Screen> screens = new Dictionary<string, Screen>();
-        public LevelsResourses()
+        public static Dictionary<string, Screen> screens = new Dictionary<string, Screen>();
+        static LevelsResourses()
         {  
             // first screen
             Point[] oneSlice1 = new Point[]{
@@ -40,7 +40,11 @@ namespace Model
             List<Enemy> enemies1 = new List<Enemy>();
             enemies1.Add(new MediumEnemy(500, GameModel.ZeroAxios, GameShapes.gameShapes["mediumEnemy"]));
 
-            screens.Add("screen_1", new Screen(new GroundLine(0, GameModel.ZeroAxios, grounds1), specialItems1, enemies1));
+          
+            Geometry doorNextScreenShape1 = new LineGeometry(new Point(0, 0), new Point(0, -160)).GetWidenedPathGeometry(new Pen(Brushes.Black, 2));
+            DoorNextScreen doorNextScreen1 = new DoorNextScreen(783, GameModel.ZeroAxios, Brushes.Black, new Pen(Brushes.Black, 5), doorNextScreenShape1);
+
+            screens.Add("screen_1", new Screen(new GroundLine(0, GameModel.ZeroAxios, grounds1), specialItems1, enemies1, doorNextScreen1));
 
 
             // second screen

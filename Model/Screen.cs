@@ -13,11 +13,13 @@ namespace Model
         public GroundLine groundLine;
         public List<SpecialItem> specialItems;
         public List<Enemy> enemies;
-        public Screen(GroundLine groundLine, List<SpecialItem> specialItems = null, List<Enemy> enemies = null)
+        public DoorNextScreen doorNextScreen;
+        public Screen(GroundLine groundLine, List<SpecialItem> specialItems = null, List<Enemy> enemies = null, DoorNextScreen doorNextScreen = null)
         {
             this.specialItems = specialItems;
             this.groundLine = groundLine;
             this.enemies = enemies;
+            this.doorNextScreen = doorNextScreen;
         }
     }
 }

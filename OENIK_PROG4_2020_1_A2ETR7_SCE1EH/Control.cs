@@ -81,6 +81,15 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
                 model.player.CY = combGeoPlayerVSGround.Bounds.Top - 48;
 
             }
+            if (model.screen.doorNextScreen != null)
+            {
+                PathGeometry combGeoPlayerVSDoorNextScreen = model.screen.doorNextScreen.CombinedGeos(model.player);
+                if (combGeoPlayerVSDoorNextScreen.GetArea() > 0)
+                {
+                    logic.ChangeScreen();
+                }
+            }
+        
             if (model.player.CY > model.GameHeight)
             {
                 MessageBox.Show("Fail!");
@@ -98,7 +107,7 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
             {
                 case Key.Right: logic.MovePlayer(Direction.Right) ; break;
                 case Key.Left: logic.MovePlayer(Direction.Left); break;
-                case Key.Space: logic.RotateLevel(); break;
+                case Key.Space: logic.RotateSreen(); break;
             }
             InvalidateVisual();
         }

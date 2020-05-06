@@ -24,8 +24,7 @@ namespace Model
                 Lives = 3
             };
 
-            LevelsResourses resourses = new LevelsResourses();
-            screen = resourses.screens["screen_1"];
+            screen = LevelsResourses.screens["screen_1"];
         }
     }
 }

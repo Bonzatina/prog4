@@ -33,11 +33,17 @@ namespace Renderer
             ctx.DrawGeometry(Brushes.Black, new Pen(Brushes.Black, 2), model.screen.groundLine.RealArea);
             model.screen.specialItems?.ForEach(item => ctx.DrawGeometry(item.brush, item.pen, item.RealArea));
             model.screen.enemies?.ForEach(item => ctx.DrawGeometry(Brushes.Red, new Pen(Brushes.Black, 2), item.RealArea));
-            Console.WriteLine(model.player.Lives);
+            //Console.WriteLine(model.player.Lives);
             for (int i = 0; i < model.player.Lives; i++)
             {
                 ctx.DrawGeometry(Brushes.BlueViolet, new Pen(Brushes.Brown, 2), new EllipseGeometry(new Rect(i* 25, 7, 20, 20)));
             }
+            if (model.screen.doorNextScreen != null)
+            {
+                  ctx.DrawGeometry(model.screen.doorNextScreen.brush, model.screen.doorNextScreen.pen, model.screen.doorNextScreen.RealArea);
+            }
+           
+            
         }
 
         private void DrawPlayer(DrawingContext ctx)

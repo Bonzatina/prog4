@@ -37,7 +37,7 @@ namespace Logic
             }
         }
 
-        public void RotateLevel()
+        public void RotateSreen()
         {
             TransformGroup tg = new TransformGroup();
             tg.Children.Add(new MatrixTransform(new Matrix(1, 0, 0, -1, 0, 0)));
@@ -52,6 +52,18 @@ namespace Logic
                 enemy.area.Transform = tg;
                 enemy.area = enemy.area.GetFlattenedPathGeometry();
             });
+            if (model.screen.doorNextScreen != null)
+            {
+                model.screen.doorNextScreen.area.Transform = tg;
+                model.screen.doorNextScreen.area = model.screen.doorNextScreen.area.GetFlattenedPathGeometry();
+            }
+     
+        }
+
+        public void ChangeScreen()
+        {
+            model.screen.doorNextScreen.OnPlayerPickUp(model.player);
+            model.screen = LevelsResourses.screens["screen_2"];      
         }
 
         public void IncreasePlayerLife()
