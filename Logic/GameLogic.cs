@@ -1,4 +1,5 @@
 ﻿using Model;
+using Model.Bullets;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,13 +58,13 @@ namespace Logic
                 model.screen.doorNextScreen.area.Transform = tg;
                 model.screen.doorNextScreen.area = model.screen.doorNextScreen.area.GetFlattenedPathGeometry();
             }
-     
+
         }
 
         public void ChangeScreen()
         {
             model.screen.doorNextScreen.OnPlayerPickUp(model);
-            model.screen = LevelsResourses.screens["screen_2"];      
+            model.screen = LevelsResourses.screens["screen_2"];
         }
 
         public void IncreasePlayerLife()
@@ -104,7 +105,7 @@ namespace Logic
 
         public void AddEnemies(List<Enemy> enemies)
         {
-            foreach(Enemy item in enemies)
+            foreach (Enemy item in enemies)
             {
                 this.AddEnemy(item);
             }
@@ -123,7 +124,7 @@ namespace Logic
         public bool RemoveEnemies(List<Enemy> enemies) // if ANY of the enemies was not found, at the end of the process, output will be false;
         {
             bool output = false;
-            foreach(Enemy item in enemies)
+            foreach (Enemy item in enemies)
             {
                 output = false;
                 if (this.RemoveEnemy(item))
@@ -137,6 +138,53 @@ namespace Logic
         public void RemoveAllEnemies()
         {
             model.screen.enemies.Clear();
+        }
+
+        public List<Bullet> GetAllBullets()
+        {
+            return model.screen.bullets;
+        }
+
+        public void AddBullet(Bullet bullet)
+        {
+            model.screen.bullets.ToList().Add(bullet);
+        }
+
+        public void AddBullets(List<Bullet> bullets)
+        {
+            foreach (Bullet item in bullets)
+            {
+                this.AddBullet(item);
+            }
+        }
+
+        public bool RemoveBullet(Bullet bullet) // returns false if bullet was not found.
+        {
+            if (model.screen.bullets.Contains(bullet))
+            {
+                model.screen.bullets.ToList().Remove(bullet);
+                return true;
+            }
+            return false;
+        }
+
+        public bool RemoveBullets(List<Bullet> bullets) // if ANY of the bullets was not found, at the end of the process, output will be false;
+        {
+            bool output = false;
+            foreach (Bullet item in bullets)
+            {
+                output = false;
+                if (this.RemoveBullet(item))
+                {
+                    output = true;
+                }
+            }
+            return output;
+        }
+
+        public void RemoveAllBullets()
+        {
+            model.screen.bullets.Clear();
         }
     }
 }
