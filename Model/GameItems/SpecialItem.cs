@@ -13,10 +13,10 @@ namespace Model
         public Brush brush;
         public Pen pen;
 
-        public SpecialItem(double cx, double cy, Brush brush, Pen pen, Geometry area)
+        public SpecialItem(Brush brush, Pen pen, Geometry area)
         {
-            this.CX = cx;
-            this.CY = cy;
+            this.CX = 0;
+            this.CY = GameModel.ZeroAxios;
 
             this.brush = brush;
             this.pen = pen;

@@ -10,10 +10,10 @@ namespace Model
 {
     public class GroundLine : GameItem
     {
-        public GroundLine(double cx, double cy, Point[][] grounds)
+        public GroundLine(Point[][] grounds)
         {
-            this.CX = cx;
-            this.CY = cy;
+            this.CX = 0;
+            this.CY = GameModel.ZeroAxios;
             GeometryGroup g = new GeometryGroup();          
 
             foreach (var slice in grounds)

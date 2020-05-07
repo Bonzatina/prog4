@@ -18,7 +18,7 @@ namespace Model
         }
 
 
-        public DecreaseHealthItem(int lives, double cx, double cy, Brush brush, Pen pen, Geometry area) : base(cx, cy, brush, pen, area)
+        public DecreaseHealthItem(int lives, Brush brush, Pen pen, Geometry area) : base(brush, pen, area)
         {
             this.Lives = lives;
         }

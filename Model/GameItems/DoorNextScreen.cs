@@ -9,7 +9,7 @@ namespace Model
 {
     public class DoorNextScreen : SpecialItem
     {
-        public DoorNextScreen(double cx, double cy, Brush brush, Pen pen, Geometry area) : base(cx, cy, brush, pen, area)
+        public DoorNextScreen(Brush brush, Pen pen, Geometry area) : base(brush, pen, area)
         {
 
         }

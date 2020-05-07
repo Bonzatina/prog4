@@ -29,10 +29,10 @@ namespace Model
             }
         }
 
-        public Enemy(double cx, double cy, int health, Geometry area) // different shapes & colors for enemies? (bossEnemy, mediumEnemy, smallEnemy)
+        public Enemy(int health, Geometry area) // different shapes & colors for enemies? (bossEnemy, mediumEnemy, smallEnemy)
         {
-            this.CX = cx;
-            this.CY = cy;
+            this.CX = 0;
+            this.CY = GameModel.ZeroAxios;
             this.Health = health;
             this.area = area;
         }

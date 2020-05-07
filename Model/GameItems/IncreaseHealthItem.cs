@@ -22,7 +22,7 @@ namespace Model
         }
 
 
-        public IncreaseHealthItem(int lives, double cx, double cy, Brush brush, Pen pen, Geometry area) : base(cx, cy, brush, pen, area)
+        public IncreaseHealthItem(int lives, Brush brush, Pen pen, Geometry area) : base(brush, pen, area)
         {
             this.Lives = lives;
         }

@@ -15,6 +15,8 @@ namespace Model
         static LevelsResourses()
         {  
             // first screen
+
+            // arrays of points for grounds
             Point[] oneSlice1 = new Point[]{
                 new Point(0, 0),
                 new Point(150, 0),
@@ -30,21 +32,50 @@ namespace Model
             };
             Point[][] grounds1 = new Point[][] { oneSlice1, secondSlice1 };
 
-            
-            List<SpecialItem> specialItems1 = new List<SpecialItem>();
-            //specialItems.Add(new SpecialItem(0, GameModel.ZeroAxios, Brushes.Green, new Pen(Brushes.Black, 2), new RectangleGeometry(new Rect(220, -100, 20, 30))));
-            specialItems1.Add(new IncreaseHealthItem(1, 220, GameModel.ZeroAxios, Brushes.BlueViolet, new Pen(Brushes.Black, 2), GameShapes.gameShapes["plusOneLiveShape"]));
-            specialItems1.Add(new DecreaseHealthItem(1, 700, GameModel.ZeroAxios, Brushes.Red, new Pen(Brushes.Black, 2), GameShapes.gameShapes["spikesShape"]
-                ));
 
+            // fill specialItems List
+            List<SpecialItem> specialItems1 = new List<SpecialItem>();
+            // get from Shapes dictionary needed shape
+            Geometry plusOneLiveShape1 = GameShapes.gameShapes["plusOneLiveShape"];
+            // create tranformation for it which will define it's position relative to x = 0, y = GameModel.ZeroAxios
+            TransformGroup plusOneLiveShape1Transform = new TransformGroup();
+            plusOneLiveShape1Transform.Children.Add(new TranslateTransform(220, -100)); // offsets from  x = 0, y = GameModel.ZeroAxios
+            plusOneLiveShape1.Transform = plusOneLiveShape1Transform;
+            // get final shape now we can add it to List
+            plusOneLiveShape1 = plusOneLiveShape1.GetFlattenedPathGeometry();
+
+            // go to next shape ...
+            Geometry spikesShape1 = GameShapes.gameShapes["spikesShape"];
+            TransformGroup spikesShape1Tranform = new TransformGroup();
+            spikesShape1Tranform.Children.Add(new TranslateTransform(700, 0));
+            spikesShape1.Transform = spikesShape1Tranform;
+            spikesShape1 = spikesShape1.GetFlattenedPathGeometry();
+
+            specialItems1.Add(new IncreaseHealthItem(1, Brushes.BlueViolet, new Pen(Brushes.Black, 2), plusOneLiveShape1));
+            specialItems1.Add(new DecreaseHealthItem(1, Brushes.Red, new Pen(Brushes.Black, 2), spikesShape1));
+
+
+            // fill enemies ...
             List<Enemy> enemies1 = new List<Enemy>();
-            enemies1.Add(new MediumEnemy(500, GameModel.ZeroAxios, GameShapes.gameShapes["mediumEnemy"]));
+            Geometry mediumEnemyShape1 = GameShapes.gameShapes["mediumEnemyShape"];
+            TransformGroup mediumEnemyShape1Transform = new TransformGroup();
+            mediumEnemyShape1Transform.Children.Add(new TranslateTransform(500, 0));
+            mediumEnemyShape1.Transform = mediumEnemyShape1Transform;
+            mediumEnemyShape1 = mediumEnemyShape1.GetFlattenedPathGeometry();
+
+            enemies1.Add(new MediumEnemy(mediumEnemyShape1));
 
           
-            Geometry doorNextScreenShape1 = new LineGeometry(new Point(0, 0), new Point(0, -160)).GetWidenedPathGeometry(new Pen(Brushes.Black, 2));
-            DoorNextScreen doorNextScreen1 = new DoorNextScreen(1263, GameModel.ZeroAxios, Brushes.Black, new Pen(Brushes.Black, 5), doorNextScreenShape1);
+            // exit to next game screen
+            Geometry doorNextScreenShape1 = new LineGeometry(new Point(0, 0), new Point(0, -160))
+                .GetWidenedPathGeometry(new Pen(Brushes.Black, 2));
+            TransformGroup doorNextScreenShape1Transform = new TransformGroup();
+            doorNextScreenShape1Transform.Children.Add(new TranslateTransform(1263, 0));
+            doorNextScreenShape1.Transform = doorNextScreenShape1Transform;
+            doorNextScreenShape1 = doorNextScreenShape1.GetFlattenedPathGeometry();
+            DoorNextScreen doorNextScreen1 = new DoorNextScreen(Brushes.Black, new Pen(Brushes.Black, 5), doorNextScreenShape1);
 
-            screens.Add("screen_1", new Screen(new GroundLine(0, GameModel.ZeroAxios, grounds1), specialItems1, enemies1, doorNextScreen1));
+            screens.Add("screen_1", new Screen(new GroundLine(grounds1), specialItems1, enemies1, doorNextScreen1));
 
 
             // second screen
@@ -55,7 +86,7 @@ namespace Model
             };
             Point[][] grounds2 = new Point[][] { oneSlice2 };
 
-            screens.Add("screen_2", new Screen(new GroundLine(0, GameModel.ZeroAxios, grounds2)));
+            screens.Add("screen_2", new Screen(new GroundLine(grounds2)));
 
 
         }
@@ -75,12 +106,12 @@ namespace Model
             spikesShape.Children.Add(new LineGeometry(new Point(25, -60), new Point(30, -80)));
             gameShapes.Add("spikesShape", spikesShape.GetWidenedPathGeometry(new Pen(Brushes.Black, 2)));
 
-            Geometry plusOneLiveShape = new EllipseGeometry(new Rect(0, -100, 20, 30));
+            Geometry plusOneLiveShape = new EllipseGeometry(new Rect(0, 0, 20, 30));
             gameShapes.Add("plusOneLiveShape", plusOneLiveShape);
 
             GeometryGroup mediumEnemyShape = new GeometryGroup();
             mediumEnemyShape.Children.Add(new EllipseGeometry(new Rect(0, 0, 10, 50)));
-            gameShapes.Add("mediumEnemy", mediumEnemyShape);
+            gameShapes.Add("mediumEnemyShape", mediumEnemyShape);
             //new RectangleGeometry(new Rect(0, 0, 10, 50))
 
         }

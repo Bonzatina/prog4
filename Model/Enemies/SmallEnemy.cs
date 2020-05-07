@@ -9,7 +9,7 @@ namespace Model.Enemies
 {
     public class SmallEnemy : Enemy
     {
-        public SmallEnemy(double cx, double cy, Geometry area) : base(cx, cy, 75, area)
+        public SmallEnemy(Geometry area) : base(75, area)
         {
 
         }
