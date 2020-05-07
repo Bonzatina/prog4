@@ -1,4 +1,5 @@
 ﻿using Model.Enemies;
+using Model.GameItems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,16 +20,16 @@ namespace Model
             // arrays of points for grounds
             Point[] oneSlice1 = new Point[]{
                 new Point(0, 0),
-                new Point(150, 0),
-                new Point(200, 100),
-                new Point(650, -80),
+                new Point(230, 0),
+                new Point(280, 100),
+                new Point(730, -80),
                 new Point(1280, -80),
             };
 
             Point[] secondSlice1 = new Point[]
             {
-                new Point(200, -100),
-                new Point(250, -100),
+                new Point(280, -100),
+                new Point(320, -100),
             };
             Point[][] grounds1 = new Point[][] { oneSlice1, secondSlice1 };
 
@@ -39,7 +40,7 @@ namespace Model
             Geometry plusOneLiveShape1 = GameShapes.gameShapes["plusOneLiveShape"];
             // create tranformation for it which will define it's position relative to x = 0, y = GameModel.ZeroAxios
             TransformGroup plusOneLiveShape1Transform = new TransformGroup();
-            plusOneLiveShape1Transform.Children.Add(new TranslateTransform(220, -100)); // offsets from  x = 0, y = GameModel.ZeroAxios
+            plusOneLiveShape1Transform.Children.Add(new TranslateTransform(300, -100)); // offsets from  x = 0, y = GameModel.ZeroAxios
             plusOneLiveShape1.Transform = plusOneLiveShape1Transform;
             // get final shape now we can add it to List
             plusOneLiveShape1 = plusOneLiveShape1.GetFlattenedPathGeometry();
@@ -47,19 +48,27 @@ namespace Model
             // go to next shape ...
             Geometry spikesShape1 = GameShapes.gameShapes["spikesShape"];
             TransformGroup spikesShape1Tranform = new TransformGroup();
-            spikesShape1Tranform.Children.Add(new TranslateTransform(700, -80));
+            spikesShape1Tranform.Children.Add(new TranslateTransform(200, 0));
+            spikesShape1Tranform.Children.Add(new MatrixTransform(new Matrix(1, 0, 0, -1, 0, 0)));
             spikesShape1.Transform = spikesShape1Tranform;
-            spikesShape1 = spikesShape1.GetFlattenedPathGeometry();
+            spikesShape1 = spikesShape1.GetFlattenedPathGeometry();;
+
+
+            Geometry wallShape1 = GameShapes.gameShapes["wallShape"];
+            TransformGroup wallShape1Tranform = new TransformGroup();
+            wallShape1Tranform.Children.Add(new TranslateTransform(200, 0));
+            wallShape1.Transform = wallShape1Tranform;
+            wallShape1 = wallShape1.GetFlattenedPathGeometry();
 
             specialItems1.Add(new IncreaseHealthItem(1, Brushes.BlueViolet, new Pen(Brushes.Black, 2), plusOneLiveShape1));
             specialItems1.Add(new DecreaseHealthItem(1, Brushes.Red, new Pen(Brushes.Black, 2), spikesShape1));
-
+            specialItems1.Add(new WallItem(Brushes.Red, new Pen(Brushes.Black, 2), wallShape1));
 
             // fill enemies ...
             List<Enemy> enemies1 = new List<Enemy>();
             Geometry mediumEnemyShape1 = GameShapes.gameShapes["mediumEnemyShape"];
             TransformGroup mediumEnemyShape1Transform = new TransformGroup();
-            mediumEnemyShape1Transform.Children.Add(new TranslateTransform(500, 0));
+            mediumEnemyShape1Transform.Children.Add(new TranslateTransform(500, 30));
             mediumEnemyShape1.Transform = mediumEnemyShape1Transform;
             mediumEnemyShape1 = mediumEnemyShape1.GetFlattenedPathGeometry();
 
@@ -108,6 +117,11 @@ namespace Model
 
             Geometry plusOneLiveShape = new EllipseGeometry(new Rect(0, 0, 20, 30));
             gameShapes.Add("plusOneLiveShape", plusOneLiveShape);
+
+            Geometry wallShape = new LineGeometry(new Point(0, 0), new Point(0, 80))
+            //Geometry wallShape = new RectangleGeometry(new Rect(0, 0, 60, 80));
+            .GetWidenedPathGeometry(new Pen(Brushes.Black, 2));
+            gameShapes.Add("wallShape", wallShape);
 
             GeometryGroup mediumEnemyShape = new GeometryGroup();
             mediumEnemyShape.Children.Add(new EllipseGeometry(new Rect(0, 0, 10, 50)));

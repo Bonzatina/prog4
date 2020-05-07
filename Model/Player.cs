@@ -11,6 +11,7 @@ namespace Model
     public class Player : GameItem
     {
         private int lives;
+        public double PreviosCX { get; set; }
 
         public int Lives
         {

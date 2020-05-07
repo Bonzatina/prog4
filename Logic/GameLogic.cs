@@ -19,6 +19,7 @@ namespace Logic
 
         public void MovePlayer(Direction dir)
         {
+            model.player.PreviosCX = model.player.CX;
             if (dir == Direction.Right)
             {
                 model.player.CX += 7;
