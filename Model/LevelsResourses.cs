@@ -56,13 +56,13 @@ namespace Model
 
             Geometry wallShape1 = GameShapes.gameShapes["wallShape"];
             TransformGroup wallShape1Tranform = new TransformGroup();
-            wallShape1Tranform.Children.Add(new TranslateTransform(200, 0));
+            wallShape1Tranform.Children.Add(new TranslateTransform(575, -100));
             wallShape1.Transform = wallShape1Tranform;
             wallShape1 = wallShape1.GetFlattenedPathGeometry();
 
             specialItems1.Add(new IncreaseHealthItem(1, Brushes.BlueViolet, new Pen(Brushes.Black, 2), plusOneLiveShape1));
             specialItems1.Add(new DecreaseHealthItem(1, Brushes.Red, new Pen(Brushes.Black, 2), spikesShape1));
-            specialItems1.Add(new WallItem(Brushes.Red, new Pen(Brushes.Black, 2), wallShape1));
+            //specialItems1.Add(new WallItem(Brushes.DarkKhaki, new Pen(Brushes.DarkGray, 2), wallShape1));
 
             // fill enemies ...
             List<Enemy> enemies1 = new List<Enemy>();
@@ -118,9 +118,9 @@ namespace Model
             Geometry plusOneLiveShape = new EllipseGeometry(new Rect(0, 0, 20, 30));
             gameShapes.Add("plusOneLiveShape", plusOneLiveShape);
 
-            Geometry wallShape = new LineGeometry(new Point(0, 0), new Point(0, 80))
-            //Geometry wallShape = new RectangleGeometry(new Rect(0, 0, 60, 80));
-            .GetWidenedPathGeometry(new Pen(Brushes.Black, 2));
+            //Geometry wallShape = new LineGeometry(new Point(0, 0), new Point(0, 80))
+            Geometry wallShape = new RectangleGeometry(new Rect(0, 0, 5, 80));
+            //.GetWidenedPathGeometry(new Pen(Brushes.Black, 2));
             gameShapes.Add("wallShape", wallShape);
 
             GeometryGroup mediumEnemyShape = new GeometryGroup();

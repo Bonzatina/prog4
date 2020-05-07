@@ -15,8 +15,8 @@ namespace Model.GameItems
         }
 
         public override void OnPlayerPickUp(GameModel model)
-        {
-            model.player.CX = model.player.PreviosCX;
+        {         
+            model.player.CX = model.player.PreviosCX < model.player.CX ? this.area.Bounds.Left - 10 : this.area.Bounds.Right + 10;
         }
     }
 }
