@@ -47,7 +47,7 @@ namespace Model
             // go to next shape ...
             Geometry spikesShape1 = GameShapes.gameShapes["spikesShape"];
             TransformGroup spikesShape1Tranform = new TransformGroup();
-            spikesShape1Tranform.Children.Add(new TranslateTransform(700, 0));
+            spikesShape1Tranform.Children.Add(new TranslateTransform(700, -80));
             spikesShape1.Transform = spikesShape1Tranform;
             spikesShape1 = spikesShape1.GetFlattenedPathGeometry();
 
@@ -98,12 +98,12 @@ namespace Model
         static GameShapes()
         {
             GeometryGroup spikesShape = new GeometryGroup();
-            spikesShape.Children.Add(new LineGeometry(new Point(0, -80), new Point(5, -60)));
-            spikesShape.Children.Add(new LineGeometry(new Point(5, -60), new Point(10, -80)));
-            spikesShape.Children.Add(new LineGeometry(new Point(10, -80), new Point(15, -60)));
-            spikesShape.Children.Add(new LineGeometry(new Point(15, -60), new Point(20, -80)));
-            spikesShape.Children.Add(new LineGeometry(new Point(20, -80), new Point(25, -60)));
-            spikesShape.Children.Add(new LineGeometry(new Point(25, -60), new Point(30, -80)));
+            spikesShape.Children.Add(new LineGeometry(new Point(0, 0), new Point(5, 20)));
+            spikesShape.Children.Add(new LineGeometry(new Point(5, 20), new Point(10, 0)));
+            spikesShape.Children.Add(new LineGeometry(new Point(10, 0), new Point(15, 20)));
+            spikesShape.Children.Add(new LineGeometry(new Point(15, 20), new Point(20, 0)));
+            spikesShape.Children.Add(new LineGeometry(new Point(20, 0), new Point(25, 20)));
+            spikesShape.Children.Add(new LineGeometry(new Point(25, 20), new Point(30, 0)));
             gameShapes.Add("spikesShape", spikesShape.GetWidenedPathGeometry(new Pen(Brushes.Black, 2)));
 
             Geometry plusOneLiveShape = new EllipseGeometry(new Rect(0, 0, 20, 30));
