@@ -20,7 +20,7 @@ namespace Model
                 new Point(150, 0),
                 new Point(200, 100),
                 new Point(650, -80),
-                new Point(850, -80),
+                new Point(1280, -80),
             };
 
             Point[] secondSlice1 = new Point[]
@@ -42,7 +42,7 @@ namespace Model
 
           
             Geometry doorNextScreenShape1 = new LineGeometry(new Point(0, 0), new Point(0, -160)).GetWidenedPathGeometry(new Pen(Brushes.Black, 2));
-            DoorNextScreen doorNextScreen1 = new DoorNextScreen(783, GameModel.ZeroAxios, Brushes.Black, new Pen(Brushes.Black, 5), doorNextScreenShape1);
+            DoorNextScreen doorNextScreen1 = new DoorNextScreen(1263, GameModel.ZeroAxios, Brushes.Black, new Pen(Brushes.Black, 5), doorNextScreenShape1);
 
             screens.Add("screen_1", new Screen(new GroundLine(0, GameModel.ZeroAxios, grounds1), specialItems1, enemies1, doorNextScreen1));
 

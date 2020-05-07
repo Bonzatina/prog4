@@ -14,10 +14,10 @@ namespace Model
 
         }
 
-        public override void OnPlayerPickUp(Player player)
+        public override void OnPlayerPickUp(GameModel model)
         {
-            player.CX = 10;
-            player.CY = 10;
+            model.player.CX = 10;
+            model.player.CY = 10;
         }
     }
 }

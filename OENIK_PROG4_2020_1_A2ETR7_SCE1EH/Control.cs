@@ -45,15 +45,26 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            PathGeometry combGeoPlayerVSGround = model.screen.groundLine.CombinedGeos(model.player);
+            PathGeometry combGeoPlayerVSGround = model.screen.groundLine.CombinedGeos(model.player); 
+            if (combGeoPlayerVSGround.GetArea() == 0)
+            {
+                logic.MovePlayer(Direction.Down);
+            }
+            else if (combGeoPlayerVSGround.GetArea() > 0)
+            {
+                //TODO use logic not model here
+                model.player.CY = combGeoPlayerVSGround.Bounds.Top - 48;
+
+            }
+
             SpecialItem toRemove = null;
             model.screen.specialItems?.ForEach(item =>
             {
                 PathGeometry combGeoPlayerVSSpecialItem = item.CombinedGeos(model.player);
                 if (combGeoPlayerVSSpecialItem.GetArea() > 10)
                 {
-                    toRemove = item;
                     logic.OnPlayerPickUpItem(item);
+                    toRemove = item.toRemove ? item : null;
                 }
             });
             model.screen.specialItems?.Remove(toRemove);
@@ -71,16 +82,6 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
                 }
             });
 
-            if (combGeoPlayerVSGround.GetArea() == 0)
-            {
-                logic.MovePlayer(Direction.Down);
-            }
-            else if (combGeoPlayerVSGround.GetArea() > 0)
-            {
-                //TODO use logic not model here
-                model.player.CY = combGeoPlayerVSGround.Bounds.Top - 48;
-
-            }
             if (model.screen.doorNextScreen != null)
             {
                 PathGeometry combGeoPlayerVSDoorNextScreen = model.screen.doorNextScreen.CombinedGeos(model.player);

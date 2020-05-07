@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace Model
@@ -27,9 +23,11 @@ namespace Model
             this.Lives = lives;
         }
 
-        public override void OnPlayerPickUp(Player player)
+        public override void OnPlayerPickUp(GameModel model)
         {
-            player.Lives -= this.Lives;
+            model.player.Lives -= this.Lives;
+            model.player.CX = 10;
+            model.player.CY = 10;
         }
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface ISpecialItem // needed for testing
     {
-        void OnPlayerPickUp(Player player);
+        void OnPlayerPickUp(GameModel model);
     }
 }

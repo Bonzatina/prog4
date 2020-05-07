@@ -27,9 +27,10 @@ namespace Model
             this.Lives = lives;
         }
 
-        public override void OnPlayerPickUp(Player player)
+        public override void OnPlayerPickUp(GameModel model)
         {
-            player.Lives += this.Lives;
+            this.toRemove = true;
+            model.player.Lives += this.Lives;
         }
     }
 }

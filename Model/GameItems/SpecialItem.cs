@@ -9,6 +9,7 @@ namespace Model
 {
     public class SpecialItem : GameItem, ISpecialItem
     {
+        public bool toRemove = false;
         public Brush brush;
         public Pen pen;
 
@@ -22,7 +23,7 @@ namespace Model
             this.area = area;
         }
 
-        public virtual void OnPlayerPickUp(Player player)
+        public virtual void OnPlayerPickUp(GameModel model)
         {
 
         }

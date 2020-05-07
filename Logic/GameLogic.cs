@@ -21,11 +21,11 @@ namespace Logic
         {
             if (dir == Direction.Right)
             {
-                model.player.CX += 10;
+                model.player.CX += 7;
             }
             if (dir == Direction.Left)
             {
-                model.player.CX -= 10;
+                model.player.CX -= 7;
             }
             if (dir == Direction.Up)
             {
@@ -62,7 +62,7 @@ namespace Logic
 
         public void ChangeScreen()
         {
-            model.screen.doorNextScreen.OnPlayerPickUp(model.player);
+            model.screen.doorNextScreen.OnPlayerPickUp(model);
             model.screen = LevelsResourses.screens["screen_2"];      
         }
 
@@ -89,7 +89,7 @@ namespace Logic
 
         public void OnPlayerPickUpItem(SpecialItem item)
         {
-            item.OnPlayerPickUp(model.player);
+            item.OnPlayerPickUp(this.model);
         }
 
         public List<Enemy> GetAllEnemies()
