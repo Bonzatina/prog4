@@ -15,8 +15,19 @@ namespace Model.GameItems
         }
 
         public override void OnPlayerPickUp(GameModel model)
-        {         
-            model.player.CX = model.player.PreviosCX < model.player.CX ? this.area.Bounds.Left - 10 : this.area.Bounds.Right + 10;
+        {
+            if (model.player.PreviosCX < model.player.CX)
+            {
+                model.player.CX = this.area.Bounds.Left - 10;
+                model.player.CantMoveRight = true;
+
+            }
+            else
+            {
+                model.player.CX = this.area.Bounds.Right + 10;
+                model.player.CantMoveLeft = true;
+            }  
+      
         }
     }
 }

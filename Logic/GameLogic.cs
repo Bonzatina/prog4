@@ -23,10 +23,18 @@ namespace Logic
             model.player.PreviosCX = model.player.CX;
             if (dir == Direction.Right)
             {
+                if (model.player.CantMoveRight)
+                {
+                    return;
+                }
                 model.player.CX += 7;
             }
             if (dir == Direction.Left)
             {
+                if (model.player.CantMoveLeft)
+                {
+                    return;
+                }
                 model.player.CX -= 7;
             }
             if (dir == Direction.Up)

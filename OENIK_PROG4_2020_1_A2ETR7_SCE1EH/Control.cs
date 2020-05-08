@@ -56,7 +56,10 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
                 model.player.CY = combGeoPlayerVSGround.Bounds.Top - 48;
 
             }
-
+            
+            // can't moove props used in WallItem
+            model.player.CantMoveRight = false;
+            model.player.CantMoveRight = false;
             SpecialItem toRemove = null;
             model.screen.specialItems?.ForEach(item =>
             {

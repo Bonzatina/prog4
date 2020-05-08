@@ -12,6 +12,8 @@ namespace Model
     {
         private int lives;
         public double PreviosCX { get; set; }
+        public bool CantMoveRight { get; set; } = false;
+        public bool CantMoveLeft { get; set; } = false;
 
         public int Lives
         {
