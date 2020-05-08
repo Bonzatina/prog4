@@ -8,7 +8,7 @@ namespace Model.Bullets
 {
     public class TorpedoBullet : Bullet
     {
-        public TorpedoBullet(double cx, double cy) : base(cx, cy, 100)
+        public TorpedoBullet(double cx, double cy, double dx, double dy) : base(cx, cy, dx, dy, 100)
         {
 
         }

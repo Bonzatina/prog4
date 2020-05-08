@@ -12,6 +12,7 @@ namespace Model
     public abstract class Enemy : GameItem
     {
         private int health;
+        public Bullet bullet { get; set; }
 
         public int Health
         {
@@ -41,6 +42,11 @@ namespace Model
         {
             this.CX += dx;
             this.CY += dy;
+        }
+
+        public virtual void EnemyShoot()
+        {
+    
         }
     }
 }

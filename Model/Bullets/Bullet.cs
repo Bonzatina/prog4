@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
-namespace Model.Bullets
+namespace Model
 {
     public abstract class Bullet : GameItem
     {
         private int damage;
+        private double DX;
+        private double DY;
 
         public int Damage
         {
@@ -29,19 +31,21 @@ namespace Model.Bullets
         }
 
 
-        public Bullet(double cx, double cy, int damage)
+        public Bullet(double cx, double cy, double dx, double dy, int damage)
         {
-            this.CX = cx;
-            this.CY = cy;
+            this.CX = 0;
+            this.CY = GameModel.ZeroAxios;
+            this.DX = dx;
+            this.DY = dy;
             this.Damage = damage;
             GeometryGroup g = new GeometryGroup();
-            area = new RectangleGeometry(new Rect(0, 0, 10, 50));
+            area = new RectangleGeometry(new Rect(cx, cy, 10, 3));
         }
 
-        public void Move(int dx, int dy)
+        public void Move()
         {
-            this.CX += dx;
-            this.CY += dy;
+            this.CX += this.DX;
+            this.CY += this.DY;
         }
     }
 }

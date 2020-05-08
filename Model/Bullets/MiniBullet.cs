@@ -8,7 +8,7 @@ namespace Model.Bullets
 {
     public class MiniBullet : Bullet
     {
-        public MiniBullet(double cx, double cy) : base(cx, cy, 7)
+        public MiniBullet(double cx, double cy, double dx, double dy) : base(cx, cy, dx, dy, 7)
         {
 
         }

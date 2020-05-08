@@ -19,6 +19,7 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
         GameLogic logic;
         GameRenderer renderer;
         DispatcherTimer timer;
+        DispatcherTimer bullets_timer;
 
         public Control()
         {
@@ -38,8 +39,46 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
                 timer.Interval = TimeSpan.FromMilliseconds(50);
                 timer.Tick += Timer_Tick;
                 timer.Start();
+
+                bullets_timer = new DispatcherTimer();
+                bullets_timer.Interval = TimeSpan.FromMilliseconds(50);
+                bullets_timer.Tick += Bullets_timer_Tick;
+                bullets_timer.Start();
             }
 
+            InvalidateVisual();
+        }
+
+        private void Bullets_timer_Tick(object sender, EventArgs e)
+        {
+            model.screen.enemies?.ForEach(enemy =>
+            {
+                if (enemy.bullet == null)
+                {
+                    // TODO continue with bullets
+                    //enemy.EnemyShoot();
+                    //model.screen.bullets.Add(enemy.bullet);
+                    return;
+                }
+                else
+                {
+                    enemy.bullet.Move();
+                    PathGeometry combGeoBulletVSGround = enemy.bullet.CombinedGeos(model.screen.groundLine);
+                    if (combGeoBulletVSGround.GetArea() > 0 ||
+                    enemy.bullet.CX < 0 || enemy.bullet.CY < 0 ||
+                    enemy.bullet.CY > model.GameHeight || enemy.bullet.CX > model.GameWidth)
+                    {
+                        enemy.bullet = null;
+                    }
+                    //PathGeometry combGeoBulletVSPlayer = enemy.bullet?.CombinedGeos(model.player);
+                    //if (combGeoBulletVSPlayer.GetArea() > 0)
+                    //{
+                    //    enemy.bullet = null;
+                    //    logic.DecreasePlayerLife();
+                    //}
+                }
+    
+            });     
             InvalidateVisual();
         }
 

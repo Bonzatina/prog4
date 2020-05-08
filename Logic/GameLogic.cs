@@ -62,6 +62,10 @@ namespace Logic
                 enemy.area.Transform = tg;
                 enemy.area = enemy.area.GetFlattenedPathGeometry();
             });
+            model.screen.bullets?.ForEach(bullet => {
+                bullet.area.Transform = tg;
+                bullet.area = bullet.area.GetFlattenedPathGeometry();
+            });
             if (model.screen.doorNextScreen != null)
             {
                 model.screen.doorNextScreen.area.Transform = tg;
