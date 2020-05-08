@@ -55,7 +55,7 @@ namespace Model
             // go to next shape ...
             Geometry spikesShape1 = GameShapes.gameShapes["spikesShape"];
             TransformGroup spikesShape1Tranform = new TransformGroup();
-            spikesShape1Tranform.Children.Add(new TranslateTransform(200, 0));
+            spikesShape1Tranform.Children.Add(new TranslateTransform(180, 0));
             spikesShape1Tranform.Children.Add(new MatrixTransform(new Matrix(1, 0, 0, -1, 0, 0)));
             spikesShape1.Transform = spikesShape1Tranform;
             spikesShape1 = spikesShape1.GetFlattenedPathGeometry();
@@ -86,7 +86,14 @@ namespace Model
             mediumEnemyShape1.Transform = mediumEnemyShape1Transform;
             mediumEnemyShape1 = mediumEnemyShape1.GetFlattenedPathGeometry();
 
+            //Geometry mediumEnemyShape2 = GameShapes.gameShapes["mediumEnemyShape"];
+            //TransformGroup mediumEnemyShape2Transform = new TransformGroup();
+            //mediumEnemyShape2Transform.Children.Add(new TranslateTransform(650, 135));
+            //mediumEnemyShape2.Transform = mediumEnemyShape2Transform;
+            //mediumEnemyShape2 = mediumEnemyShape2.GetFlattenedPathGeometry();
+
             enemies1.Add(new MediumEnemy(mediumEnemyShape1));
+            //enemies1.Add(new MediumEnemy(mediumEnemyShape2));
 
           
             // exit to next game screen
