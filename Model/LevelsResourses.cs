@@ -112,11 +112,26 @@ namespace Model
             Point[] oneSlice2 = new Point[]{
                 new Point(0, 0),
                 new Point(150, 0),
-       
+                new Point(330, -270),
+                new Point(930, -270),
+                new Point(1200, 70),
+                new Point(1280, 70),
+
             };
             Point[][] grounds2 = new Point[][] { oneSlice2 };
 
             screens.Add("screen_2", new Screen(new GroundLine(grounds2)));
+
+
+            // third screen
+            Point[] oneSlice3 = new Point[]{
+                new Point(0, 0),
+                new Point(150, 0),
+
+            };
+            Point[][] grounds3 = new Point[][] { oneSlice3 };
+
+            screens.Add("screen_3", new Screen(new GroundLine(grounds3)));
 
 
         }

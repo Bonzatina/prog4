@@ -16,12 +16,15 @@ namespace Model
         public List<Enemy> enemies;
         public List<Bullet> bullets = new List<Bullet>();
         public DoorNextScreen doorNextScreen;
+        public string NextScreen { get; set; }
         public Screen(GroundLine groundLine, List<SpecialItem> specialItems = null, List<Enemy> enemies = null, DoorNextScreen doorNextScreen = null)
         {
             this.specialItems = specialItems;
             this.groundLine = groundLine;
             this.enemies = enemies;
             this.doorNextScreen = doorNextScreen;
+            // TODO 
+            this.NextScreen = "screen_2";
         }
     }
 }
