@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Bullets;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace Model
         public GroundLine groundLine;
         public List<SpecialItem> specialItems;
         public List<Enemy> enemies;
+        public List<Bullet> bullets;
         public DoorNextScreen doorNextScreen;
         public Screen(GroundLine groundLine, List<SpecialItem> specialItems = null, List<Enemy> enemies = null, DoorNextScreen doorNextScreen = null)
         {

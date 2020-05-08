@@ -5,9 +5,16 @@ specialItems - /backend - rework specialItems creation, implement specialItemsty
 --DONE
 
 enemies - /backend - add Emeny class to Model lib. Implement adding list of Enemies to Level instance. Impelement EnemyDestroy function in Logic to remove enemy from List. /frontend - implement rendering Enemies.
+--PARTLY DONE
 
 player - /backend - move changing position of player to logic. Implement respwan method. Move what needed from Control to Logic.
 
-bullets - ....
+scores - /backend - implement scores in model and logic. add specialItem with action +scores. /frontend - implement scores counter, and handling of pickUp PlusScoresItem
+
+bullets - /backend - implement bullets. /frontend - impelement bullets.
 
 levels - /backend and /frotnend - rework level creation. impelement changing levels... implement what needed ...
+
+tests - add tests for logic
+
+add stylecop, add doxygen, work on documentation

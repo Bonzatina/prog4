@@ -44,6 +44,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bullets\Bullet.cs" />
+    <Compile Include="Bullets\MiniBullet.cs" />
+    <Compile Include="Bullets\StandardBullet.cs" />
+    <Compile Include="Bullets\TorpedoBullet.cs" />
     <Compile Include="Enemies\BossEnemy.cs" />
     <Compile Include="Enemies\Enemy.cs" />
     <Compile Include="Enemies\MediumEnemy.cs" />
