@@ -59,7 +59,7 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
             
             // can't moove props used in WallItem
             model.player.CantMoveRight = false;
-            model.player.CantMoveRight = false;
+            model.player.CantMoveLeft = false;
             SpecialItem toRemove = null;
             model.screen.specialItems?.ForEach(item =>
             {
@@ -112,7 +112,8 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
                 case Key.Right: logic.MovePlayer(Direction.Right) ; break;
                 case Key.Left: logic.MovePlayer(Direction.Left); break;
                 case Key.Space: logic.RotateSreen(); break;
-                case Key.D: MessageBox.Show(model.player.CX.ToString(), model.player.CY.ToString()); break; // dev 
+                case Key.D: double cy = model.player.CY - GameModel.ZeroAxios;
+                    MessageBox.Show(model.player.CX.ToString(), cy.ToString()); break; // dev 
             }
             InvalidateVisual();
         }
