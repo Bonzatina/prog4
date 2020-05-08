@@ -1,165 +1,168 @@
-﻿using Logic;
-using Model;
-using Renderer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Threading;
-
-namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
+﻿namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Threading;
+    using Logic;
+    using Model;
+    using Renderer;
+
     class Control : FrameworkElement
     {
-        GameModel model;
-        GameLogic logic;
-        GameRenderer renderer;
-        DispatcherTimer timer;
-        DispatcherTimer bullets_timer;
+        private GameModel model;
+        private GameLogic logic;
+        private GameRenderer renderer;
+        private DispatcherTimer timer;
+        DispatcherTimer bulletsTimer;
 
         public Control()
         {
-            Loaded += Control_Loaded;
+            this.Loaded += this.Control_Loaded;
         }
 
         private void Control_Loaded(object sender, RoutedEventArgs e)
         {
-            model = new GameModel(ActualWidth, ActualHeight);
-            logic = new GameLogic(model);
-            renderer = new GameRenderer(model);
+            this.model = new GameModel(this.ActualWidth, this.ActualHeight);
+            this.logic = new GameLogic(this.model);
+            this.renderer = new GameRenderer(this.model);
             Window win = Window.GetWindow(this);
             if (win != null)
             {
-                win.KeyDown += Win_KeyDown;                
-                timer = new DispatcherTimer();
-                timer.Interval = TimeSpan.FromMilliseconds(50);
-                timer.Tick += Timer_Tick;
-                timer.Start();
+                win.KeyDown += this.Win_KeyDown;
+                this.timer = new DispatcherTimer();
+                this.timer.Interval = TimeSpan.FromMilliseconds(50);
+                this.timer.Tick += this.Timer_Tick;
+                this.timer.Start();
 
-                bullets_timer = new DispatcherTimer();
-                bullets_timer.Interval = TimeSpan.FromMilliseconds(50);
-                bullets_timer.Tick += Bullets_timer_Tick;
-                bullets_timer.Start();
+                this.bulletsTimer = new DispatcherTimer();
+                this.bulletsTimer.Interval = TimeSpan.FromMilliseconds(50);
+                this.bulletsTimer.Tick += this.Bullets_timer_Tick;
+                this.bulletsTimer.Start();
             }
 
-            InvalidateVisual();
+            this.InvalidateVisual();
         }
 
         private void Bullets_timer_Tick(object sender, EventArgs e)
         {
-            model.screen.enemies?.ForEach(enemy =>
+            this.model.screen.enemies?.ForEach(enemy =>
             {
                 if (enemy.bullet == null)
                 {
                     // TODO continue with bullets
-                    //enemy.EnemyShoot();
-                    //model.screen.bullets.Add(enemy.bullet);
+                    // enemy.EnemyShoot();
+                    // model.screen.bullets.Add(enemy.bullet);
                     return;
                 }
                 else
                 {
                     enemy.bullet.Move();
-                    PathGeometry combGeoBulletVSGround = enemy.bullet.CombinedGeos(model.screen.groundLine);
+                    PathGeometry combGeoBulletVSGround = enemy.bullet.CombinedGeos(this.model.screen.groundLine);
                     if (combGeoBulletVSGround.GetArea() > 0 ||
                     enemy.bullet.CX < 0 || enemy.bullet.CY < 0 ||
-                    enemy.bullet.CY > model.GameHeight || enemy.bullet.CX > model.GameWidth)
+                    enemy.bullet.CY > this.model.GameHeight || enemy.bullet.CX > this.model.GameWidth)
                     {
                         enemy.bullet = null;
                     }
-                    //PathGeometry combGeoBulletVSPlayer = enemy.bullet?.CombinedGeos(model.player);
-                    //if (combGeoBulletVSPlayer.GetArea() > 0)
-                    //{
+
+                    // PathGeometry combGeoBulletVSPlayer = enemy.bullet?.CombinedGeos(model.player);
+                    // if (combGeoBulletVSPlayer.GetArea() > 0)
+                    // {
                     //    enemy.bullet = null;
                     //    logic.DecreasePlayerLife();
-                    //}
+                    // }
                 }
-    
-            });     
-            InvalidateVisual();
+
+            });
+            this.InvalidateVisual();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            PathGeometry combGeoPlayerVSGround = model.screen.groundLine.CombinedGeos(model.player); 
+            PathGeometry combGeoPlayerVSGround = this.model.screen.groundLine.CombinedGeos(this.model.player); 
             if (combGeoPlayerVSGround.GetArea() == 0)
             {
-                logic.MovePlayer(Direction.Down);
+                this.logic.MovePlayer(Direction.Down);
             }
             else if (combGeoPlayerVSGround.GetArea() > 0)
             {
-                //TODO use logic not model here
-                model.player.CY = combGeoPlayerVSGround.Bounds.Top - 48;
-
+                // TODO use logic not model here
+                this.model.player.CY = combGeoPlayerVSGround.Bounds.Top - 48;
             }
-            
+
             // can't moove props used in WallItem
-            model.player.CantMoveRight = false;
-            model.player.CantMoveLeft = false;
+            this.model.player.CantMoveRight = false;
+            this.model.player.CantMoveLeft = false;
             SpecialItem toRemove = null;
-            model.screen.specialItems?.ForEach(item =>
+            this.model.screen.specialItems?.ForEach(item =>
             {
-                PathGeometry combGeoPlayerVSSpecialItem = item.CombinedGeos(model.player);
+                PathGeometry combGeoPlayerVSSpecialItem = item.CombinedGeos(this.model.player);
                 if (combGeoPlayerVSSpecialItem.GetArea() > 10)
                 {
-                    logic.OnPlayerPickUpItem(item);
+                    this.logic.OnPlayerPickUpItem(item);
                     toRemove = item.toRemove ? item : null;
                 }
             });
-            model.screen.specialItems?.Remove(toRemove);
+            this.model.screen.specialItems?.Remove(toRemove);
 
-            model.screen.enemies?.ForEach(enemy =>
+            this.model.screen.enemies?.ForEach(enemy =>
             {
-                //enemy.CY += 10;
+                // enemy.CY += 10;
                 PathGeometry combGeoPlayerVSSpecialItem = enemy.CombinedGeos(model.player);
                 if (combGeoPlayerVSSpecialItem.GetArea() > 0)
                 {
                     // TODO move CX, CY asignments to logic
-                    logic.DecreasePlayerLife();
-                    model.player.CX = 10;
-                    model.player.CY = 10;
+                    this.logic.DecreasePlayerLife();
+                    this.model.player.CX = 10;
+                    this.model.player.CY = 10;
                 }
             });
 
-            if (model.screen.doorNextScreen != null)
+            if (this.model.screen.doorNextScreen != null)
             {
-                PathGeometry combGeoPlayerVSDoorNextScreen = model.screen.doorNextScreen.CombinedGeos(model.player);
+                PathGeometry combGeoPlayerVSDoorNextScreen = this.model.screen.doorNextScreen.CombinedGeos(this.model.player);
                 if (combGeoPlayerVSDoorNextScreen.GetArea() > 0)
                 {
-                    logic.ChangeScreen();
+                    this.logic.ChangeScreen();
                 }
             }
-        
-            if (model.player.CY > model.GameHeight)
+
+            if (this.model.player.CY > this.model.GameHeight)
             {
                 MessageBox.Show("Fail!");
-                //TODO impement respawn method in GameLogic
-                model.player.CX = 10;
-                model.player.CY = 10;
-                logic.DecreasePlayerLife();
+
+                // TODO impement respawn method in GameLogic
+                this.model.player.CX = 10;
+                this.model.player.CY = 10;
+                this.logic.DecreasePlayerLife();
             }
-            InvalidateVisual();
+
+            this.InvalidateVisual();
         }
 
         private void Win_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
-                case Key.Right: logic.MovePlayer(Direction.Right) ; break;
-                case Key.Left: logic.MovePlayer(Direction.Left); break;
-                case Key.Space: logic.RotateSreen(); break;
-                case Key.D: double cy = model.player.CY - GameModel.ZeroAxios;
-                    MessageBox.Show(model.player.CX.ToString(), cy.ToString()); break; // dev 
+                case Key.Right: this.logic.MovePlayer(Direction.Right); break;
+                case Key.Left: this.logic.MovePlayer(Direction.Left); break;
+                case Key.Space: this.logic.RotateSreen(); break;
+                case Key.D: double cy = this.model.player.CY - GameModel.ZeroAxios;
+                    MessageBox.Show(this.model.player.CX.ToString(), cy.ToString()); break; // dev
             }
-            InvalidateVisual();
+
+            this.InvalidateVisual();
         }
 
         protected override void OnRender(DrawingContext drawingContext)
         {
-            if (renderer != null) renderer.BuildDisplay(drawingContext);
+            if (this.renderer != null) renderer.BuildDisplay(drawingContext);
         }
     }
 }
