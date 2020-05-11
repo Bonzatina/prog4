@@ -47,6 +47,12 @@ namespace Logic
             }
         }
 
+        public void PlayerShoot()
+        {
+            this.model.player.PlayerShoot();
+            model.screen.playerBullets.Add(this.model.player.bullets.Last());
+        }
+
         public void RotateSreen()
         {
             TransformGroup tg = new TransformGroup();
@@ -76,8 +82,7 @@ namespace Logic
 
         public void ChangeScreen()
         {
-            model.screen.doorNextScreen.OnPlayerPickUp(model);
-            model.screen = LevelsResourses.screens["screen_2"];
+            model.screen.doorNextScreen.OnPlayerPickUp(model);           
         }
 
         public void IncreasePlayerLife()

@@ -14,6 +14,7 @@ namespace Model
         public double PreviosCX { get; set; }
         public bool CantMoveRight { get; set; } = false;
         public bool CantMoveLeft { get; set; } = false;
+        public List<Bullet> bullets { get; set; }
 
         public int Lives
         {
@@ -39,6 +40,16 @@ namespace Model
             this.CY = cy;
             GeometryGroup g = new GeometryGroup();
             area = new RectangleGeometry(new Rect(0, 0, 10, 50));
+            this.bullets = new List<Bullet>();
+        }
+
+        public void PlayerShoot()
+        {
+            int dir = this.PreviosCX < this.CX ? 5 : -5;
+            this.bullets.Add(new StandardBullet(this.RealArea.Bounds.Left,
+           (this.RealArea.Bounds.Top + this.RealArea.Bounds.Bottom) / 2 - GameModel.ZeroAxios,
+           dir, 0));
+
         }
     }
 }

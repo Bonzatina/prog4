@@ -33,7 +33,9 @@ namespace Renderer
             ctx.DrawGeometry(Brushes.Black, new Pen(Brushes.Black, 2), model.screen.groundLine.RealArea);
             model.screen.specialItems?.ForEach(item => ctx.DrawGeometry(item.brush, item.pen, item.RealArea));
             model.screen.enemies?.ForEach(item => ctx.DrawGeometry(Brushes.Red, new Pen(Brushes.Black, 2), item.RealArea));
-            Console.WriteLine(model.screen.bullets.Count());
+            //Console.WriteLine(model.screen.bullets.Count());
+            //Console.WriteLine(model.screen.playerBullets.Count);
+            model.screen.playerBullets?.ForEach(bulet => ctx.DrawGeometry(Brushes.Brown, new Pen(Brushes.Black, 2), bulet.RealArea));
             model.screen.bullets?.ForEach(bulet => ctx.DrawGeometry(Brushes.Brown, new Pen(Brushes.Black, 2), bulet.RealArea));
             //Console.WriteLine(model.player.Lives);
             for (int i = 0; i < model.player.Lives; i++)

@@ -39,6 +39,7 @@ namespace Model
             this.DY = dy;
             this.Damage = damage;
             GeometryGroup g = new GeometryGroup();
+            // TODO move to Shapes or not if we don't have cx, cy there
             area = new RectangleGeometry(new Rect(cx, cy, 10, 3));
         }
 

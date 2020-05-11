@@ -55,7 +55,7 @@ namespace Model
             // go to next shape ...
             Geometry spikesShape1 = GameShapes.gameShapes["spikesShape"];
             TransformGroup spikesShape1Tranform = new TransformGroup();
-            spikesShape1Tranform.Children.Add(new TranslateTransform(200, 0));
+            spikesShape1Tranform.Children.Add(new TranslateTransform(180, 0));
             spikesShape1Tranform.Children.Add(new MatrixTransform(new Matrix(1, 0, 0, -1, 0, 0)));
             spikesShape1.Transform = spikesShape1Tranform;
             spikesShape1 = spikesShape1.GetFlattenedPathGeometry();
@@ -86,7 +86,14 @@ namespace Model
             mediumEnemyShape1.Transform = mediumEnemyShape1Transform;
             mediumEnemyShape1 = mediumEnemyShape1.GetFlattenedPathGeometry();
 
+            //Geometry mediumEnemyShape2 = GameShapes.gameShapes["mediumEnemyShape"];
+            //TransformGroup mediumEnemyShape2Transform = new TransformGroup();
+            //mediumEnemyShape2Transform.Children.Add(new TranslateTransform(650, 135));
+            //mediumEnemyShape2.Transform = mediumEnemyShape2Transform;
+            //mediumEnemyShape2 = mediumEnemyShape2.GetFlattenedPathGeometry();
+
             enemies1.Add(new MediumEnemy(mediumEnemyShape1));
+            //enemies1.Add(new MediumEnemy(mediumEnemyShape2));
 
           
             // exit to next game screen
@@ -96,20 +103,52 @@ namespace Model
             doorNextScreenShape1Transform.Children.Add(new TranslateTransform(1263, 0));
             doorNextScreenShape1.Transform = doorNextScreenShape1Transform;
             doorNextScreenShape1 = doorNextScreenShape1.GetFlattenedPathGeometry();
-            DoorNextScreen doorNextScreen1 = new DoorNextScreen(Brushes.Black, new Pen(Brushes.Black, 5), doorNextScreenShape1);
+            DoorNextScreen doorNextScreen1 = new DoorNextScreen("screen_2", Brushes.Black, new Pen(Brushes.Black, 5), doorNextScreenShape1);
 
-            screens.Add("screen_1", new Screen(new GroundLine(grounds1), specialItems1, enemies1, doorNextScreen1));
+            screens.Add("screen_1", new Screen(new GroundLine(grounds1), doorNextScreen1, specialItems1, enemies1));
 
 
             // second screen
             Point[] oneSlice2 = new Point[]{
                 new Point(0, 0),
                 new Point(150, 0),
-       
-            };
-            Point[][] grounds2 = new Point[][] { oneSlice2 };
+                new Point(330, -230),
+                new Point(930, -230),
+                new Point(1200, 70),
+                new Point(1280, 70),
 
-            screens.Add("screen_2", new Screen(new GroundLine(grounds2)));
+            };
+            Point[] secondSlice2 = new Point[]{ 
+                new Point(330, 100),
+                new Point(500, 200),
+            };
+            Point[] firstSlice2 = new Point[]{
+                new Point(480, 0),
+                new Point(650, 100),
+            };
+
+            Point[][] grounds2 = new Point[][] { oneSlice2, secondSlice2, firstSlice2 };
+
+            Geometry doorNextScreenShape2 = new LineGeometry(new Point(0, 0), new Point(0, -160))
+                .GetWidenedPathGeometry(new Pen(Brushes.Black, 2));
+            TransformGroup doorNextScreenShape2Transform = new TransformGroup();
+            doorNextScreenShape2Transform.Children.Add(new TranslateTransform(1263,  140));
+            doorNextScreenShape2.Transform = doorNextScreenShape2Transform;
+            doorNextScreenShape2 = doorNextScreenShape2.GetFlattenedPathGeometry();
+            DoorNextScreen doorNextScreen2 = new DoorNextScreen("screen_3", Brushes.Black, new Pen(Brushes.Black, 5), doorNextScreenShape2);
+
+            screens.Add("screen_2", new Screen(new GroundLine(grounds2), doorNextScreen2));
+
+
+            // third screen
+            Point[] oneSlice3 = new Point[]{
+                new Point(0, 0),
+                new Point(150, 0),
+
+            };
+            Point[][] grounds3 = new Point[][] { oneSlice3 };
+
+            screens.Add("screen_3", new Screen(new GroundLine(grounds3)));
 
 
         }

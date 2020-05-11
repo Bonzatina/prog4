@@ -1,10 +1,6 @@
 ﻿namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Input;
     using System.Windows.Media;
@@ -19,7 +15,7 @@
         private GameLogic logic;
         private GameRenderer renderer;
         private DispatcherTimer timer;
-        DispatcherTimer bulletsTimer;
+        private DispatcherTimer bulletsTimer;
 
         public Control()
         {
@@ -51,13 +47,14 @@
 
         private void Bullets_timer_Tick(object sender, EventArgs e)
         {
+            this.model.screen.playerBullets?.ForEach(bulet => bulet.Move());
             this.model.screen.enemies?.ForEach(enemy =>
             {
                 if (enemy.bullet == null)
                 {
                     // TODO continue with bullets
-                    // enemy.EnemyShoot();
-                    // model.screen.bullets.Add(enemy.bullet);
+                    enemy.EnemyShoot();
+                    model.screen.bullets.Add(enemy.bullet);
                     return;
                 }
                 else
@@ -68,15 +65,21 @@
                     enemy.bullet.CX < 0 || enemy.bullet.CY < 0 ||
                     enemy.bullet.CY > this.model.GameHeight || enemy.bullet.CX > this.model.GameWidth)
                     {
+                        // TODO rework it, issue to remove bullet both from List and from enemy. or totally rework
+                        model.screen.bullets.RemoveAt(model.screen.enemies.IndexOf(enemy));
                         enemy.bullet = null;
                     }
 
-                    // PathGeometry combGeoBulletVSPlayer = enemy.bullet?.CombinedGeos(model.player);
-                    // if (combGeoBulletVSPlayer.GetArea() > 0)
-                    // {
-                    //    enemy.bullet = null;
-                    //    logic.DecreasePlayerLife();
-                    // }
+                    PathGeometry combGeoBulletVSPlayer = enemy.bullet?.CombinedGeos(model.player);
+                    if (combGeoBulletVSPlayer != null && combGeoBulletVSPlayer.GetArea() > 0)
+                    {
+                        model.screen.bullets.RemoveAt(model.screen.enemies.IndexOf(enemy));
+                        enemy.bullet = null;
+                        logic.DecreasePlayerLife();
+                        // TODO impement respawn method in GameLogic
+                        this.model.player.CX = 10;
+                        this.model.player.CY = 10;
+                    }
                 }
 
             });
@@ -85,7 +88,7 @@
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            PathGeometry combGeoPlayerVSGround = this.model.screen.groundLine.CombinedGeos(this.model.player); 
+            PathGeometry combGeoPlayerVSGround = this.model.screen.groundLine.CombinedGeos(this.model.player);
             if (combGeoPlayerVSGround.GetArea() == 0)
             {
                 this.logic.MovePlayer(Direction.Down);
@@ -117,7 +120,7 @@
                 PathGeometry combGeoPlayerVSSpecialItem = enemy.CombinedGeos(model.player);
                 if (combGeoPlayerVSSpecialItem.GetArea() > 0)
                 {
-                    // TODO move CX, CY asignments to logic
+                    // TODO impement respawn method in GameLogic
                     this.logic.DecreasePlayerLife();
                     this.model.player.CX = 10;
                     this.model.player.CY = 10;
@@ -152,6 +155,7 @@
             {
                 case Key.Right: this.logic.MovePlayer(Direction.Right); break;
                 case Key.Left: this.logic.MovePlayer(Direction.Left); break;
+                case Key.Down: this.logic.PlayerShoot(); break;
                 case Key.Space: this.logic.RotateSreen(); break;
                 case Key.D: double cy = this.model.player.CY - GameModel.ZeroAxios;
                     MessageBox.Show(this.model.player.CX.ToString(), cy.ToString()); break; // dev
