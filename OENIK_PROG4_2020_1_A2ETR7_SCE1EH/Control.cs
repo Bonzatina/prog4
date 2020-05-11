@@ -47,6 +47,7 @@
 
         private void Bullets_timer_Tick(object sender, EventArgs e)
         {
+            this.model.screen.playerBullets?.ForEach(bulet => bulet.Move());
             this.model.screen.enemies?.ForEach(enemy =>
             {
                 if (enemy.bullet == null)
@@ -154,6 +155,7 @@
             {
                 case Key.Right: this.logic.MovePlayer(Direction.Right); break;
                 case Key.Left: this.logic.MovePlayer(Direction.Left); break;
+                case Key.Down: this.logic.PlayerShoot(); break;
                 case Key.Space: this.logic.RotateSreen(); break;
                 case Key.D: double cy = this.model.player.CY - GameModel.ZeroAxios;
                     MessageBox.Show(this.model.player.CX.ToString(), cy.ToString()); break; // dev
