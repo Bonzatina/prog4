@@ -76,8 +76,7 @@ namespace Logic
 
         public void ChangeScreen()
         {
-            model.screen.doorNextScreen.OnPlayerPickUp(model);
-            model.screen = LevelsResourses.screens[model.screen.NextScreen];
+            model.screen.doorNextScreen.OnPlayerPickUp(model);           
         }
 
         public void IncreasePlayerLife()

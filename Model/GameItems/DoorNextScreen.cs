@@ -9,13 +9,15 @@ namespace Model
 {
     public class DoorNextScreen : SpecialItem
     {
-        public DoorNextScreen(Brush brush, Pen pen, Geometry area) : base(brush, pen, area)
+        public string NextScreen { get; set; }
+        public DoorNextScreen(string nextScreen, Brush brush, Pen pen, Geometry area) : base(brush, pen, area)
         {
-
+            this.NextScreen = nextScreen;
         }
 
         public override void OnPlayerPickUp(GameModel model)
         {
+            model.screen = LevelsResourses.screens[this.NextScreen];
             model.player.CX = 10;
             model.player.CY = 10;
         }
