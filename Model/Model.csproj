@@ -55,6 +55,7 @@
     <Compile Include="GameItems\DecreaseHealthItem.cs" />
     <Compile Include="GameItems\DoorNextScreen.cs" />
     <Compile Include="GameItems\GameItem.cs" />
+    <Compile Include="GameItems\IncreasePlayerScoreItem.cs" />
     <Compile Include="GameItems\ISpecialItem.cs" />
     <Compile Include="GameItems\WallItem.cs" />
     <Compile Include="GroundLine.cs" />
