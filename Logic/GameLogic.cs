@@ -214,5 +214,24 @@ namespace Logic
         {
             model.player.score += amount;
         }
+
+        public void SetRespawnPoint(int CX, int CY)
+        {
+            if (CX < 0 || CY < 0) 
+            { 
+                throw new ArgumentException("Coordinates of respawn point cannot be set as negative."); 
+            }
+            else
+            {
+                model.RespawnCX = CX;
+                model.RespawnCY = CY;
+            }
+        }
+
+        public void RespawnPlayer()
+        {
+            model.player.CX = model.RespawnCX;
+            model.player.CY = model.RespawnCY;
+        }
     }
 }
