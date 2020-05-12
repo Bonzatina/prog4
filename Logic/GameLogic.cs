@@ -204,5 +204,15 @@ namespace Logic
         {
             model.screen.bullets.Clear();
         }
+
+        public void SetPlayerScoreTo(int amount)
+        {
+            model.player.score = amount;
+        }
+
+        public void AddAmountToPlayerScore(int amount)
+        {
+            model.player.score += amount;
+        }
     }
 }

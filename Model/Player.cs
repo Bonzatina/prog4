@@ -11,6 +11,7 @@ namespace Model
     public class Player : GameItem
     {
         private int lives;
+        public int score { get; set; }
         public double PreviosCX { get; set; }
         public bool CantMoveRight { get; set; } = false;
         public bool CantMoveLeft { get; set; } = false;
