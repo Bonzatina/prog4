@@ -9,7 +9,7 @@ using System.Windows.Media;
 
 namespace Model
 {
-    public abstract class Enemy : GameItem
+    public abstract class Enemy : GameItem, IEnemy
     {
         private int health;
         public Bullet bullet { get; set; }
@@ -46,7 +46,7 @@ namespace Model
 
         public virtual void EnemyShoot()
         {
-    
+
         }
     }
 }

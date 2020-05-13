@@ -11,7 +11,7 @@
 
     public enum Direction { Left, Right, Up, Down }
 
-    public class GameLogic
+    public class GameLogic : IGameLogic
     {
         private GameModel model;
 
@@ -73,15 +73,18 @@
             model.screen.groundLine.area.Transform = tg;
             model.screen.groundLine.area = model.screen.groundLine.area.GetFlattenedPathGeometry();
 
-            model.screen.specialItems?.ForEach(item => {
+            model.screen.specialItems?.ForEach(item =>
+            {
                 item.area.Transform = tg;
                 item.area = item.area.GetFlattenedPathGeometry();
             });
-            model.screen.enemies?.ForEach(enemy => {
+            model.screen.enemies?.ForEach(enemy =>
+            {
                 enemy.area.Transform = tg;
                 enemy.area = enemy.area.GetFlattenedPathGeometry();
             });
-            model.screen.enemiesBullets?.ForEach(bullet => {
+            model.screen.enemiesBullets?.ForEach(bullet =>
+            {
                 bullet.area.Transform = tg;
                 bullet.area = bullet.area.GetFlattenedPathGeometry();
             });
@@ -232,9 +235,9 @@
 
         public void SetRespawnPoint(int CX, int CY)
         {
-            if (CX < 0 || CY < 0) 
-            { 
-                throw new ArgumentException("Coordinates of respawn point cannot be set as negative."); 
+            if (CX < 0 || CY < 0)
+            {
+                throw new ArgumentException("Coordinates of respawn point cannot be set as negative.");
             }
             else
             {
