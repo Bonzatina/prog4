@@ -1,18 +1,20 @@
-﻿using Model;
-using Model.Bullets;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
-
-namespace Logic
+﻿namespace Logic
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Media;
+    using Model;
+    using Model.Bullets;
+
     public enum Direction { Left, Right, Up, Down }
+
     public class GameLogic
     {
-        GameModel model;
+        private GameModel model;
+
         public GameLogic(GameModel model)
         {
             this.model = model;
@@ -20,7 +22,7 @@ namespace Logic
 
         public void MovePlayer(Direction dir)
         {
-            model.player.PreviosCX = model.player.CX;
+            this.model.player.PreviosCX = model.player.CX;
             if (dir == Direction.Right)
             {
                 if (model.player.CantMoveRight)
