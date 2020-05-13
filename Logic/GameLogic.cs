@@ -48,6 +48,11 @@
                 model.player.CY += 10;
             }
         }
+        public void SetPlayerPosition(double cx, double cy)
+        {
+            model.player.CX = cx;
+            model.player.CY = cy;
+        }
 
         public void PlayerShoot()
         {
@@ -84,7 +89,8 @@
 
         public void ChangeScreen()
         {
-            model.screen.doorNextScreen.OnPlayerPickUp(model);           
+            model.screen.doorNextScreen.OnPlayerPickUp(model);
+            RespawnPlayer();
         }
 
         public void IncreasePlayerLife()
@@ -97,6 +103,7 @@
             if (model.player.Lives > 0)
             {
                 model.player.Lives--;
+                RespawnPlayer();
             }
         }
 

@@ -25,9 +25,10 @@ namespace Model
 
         public override void OnPlayerPickUp(GameModel model)
         {
+            // TODO check if it is ok that we use model here, may be better move somehow to logic
             model.player.Lives -= this.Lives;
-            model.player.CX = 10;
-            model.player.CY = 10;
+            model.player.CX = model.RespawnCX;
+            model.player.CY = model.RespawnCY;
         }
     }
 }

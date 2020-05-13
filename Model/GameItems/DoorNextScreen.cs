@@ -18,8 +18,6 @@ namespace Model
         public override void OnPlayerPickUp(GameModel model)
         {
             model.screen = LevelsResourses.screens[this.NextScreen];
-            model.player.CX = 10;
-            model.player.CY = 10;
         }
     }
 }

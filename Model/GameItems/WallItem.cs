@@ -18,6 +18,7 @@ namespace Model.GameItems
         {
             if (model.player.PreviosCX < model.player.CX)
             {
+                // TODO check if it is ok that we use model here, may be better move somehow to logic
                 model.player.CX = this.area.Bounds.Left - 10;
                 model.player.CantMoveRight = true;
 

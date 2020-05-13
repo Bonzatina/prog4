@@ -22,7 +22,9 @@ namespace Model
             GameWidth = w;
             GameHeight = h;
             ZeroAxios = (int)h / 2;
-            player = new Player(10, 10)
+            RespawnCX = 10;
+            RespawnCY = 50;
+            player = new Player(RespawnCX, RespawnCY)
             {
                 Lives = 3
             };

@@ -39,7 +39,6 @@ namespace Model
         {
             this.CX = cx;
             this.CY = cy;
-            GeometryGroup g = new GeometryGroup();
             area = new RectangleGeometry(new Rect(0, 0, 10, 50));
             this.bullets = new List<Bullet>();
         }

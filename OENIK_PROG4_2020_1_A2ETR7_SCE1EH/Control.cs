@@ -75,10 +75,8 @@
                     {
                         model.screen.bullets.RemoveAt(model.screen.enemies.IndexOf(enemy));
                         enemy.bullet = null;
-                        logic.DecreasePlayerLife();
-                        // TODO impement respawn method in GameLogic
-                        this.model.player.CX = 10;
-                        this.model.player.CY = 10;
+                        logic.DecreasePlayerLife();                        
+                        logic.RespawnPlayer();
                     }
                 }
 
@@ -94,9 +92,8 @@
                 this.logic.MovePlayer(Direction.Down);
             }
             else if (combGeoPlayerVSGround.GetArea() > 0)
-            {
-                // TODO use logic not model here
-                this.model.player.CY = combGeoPlayerVSGround.Bounds.Top - 48;
+            {    
+                this.logic.SetPlayerPosition(model.player.CX, combGeoPlayerVSGround.Bounds.Top - 48);
             }
 
             // can't moove props used in WallItem
@@ -119,11 +116,9 @@
                 // enemy.CY += 10;
                 PathGeometry combGeoPlayerVSSpecialItem = enemy.CombinedGeos(model.player);
                 if (combGeoPlayerVSSpecialItem.GetArea() > 0)
-                {
-                    // TODO impement respawn method in GameLogic
+                {         
                     this.logic.DecreasePlayerLife();
-                    this.model.player.CX = 10;
-                    this.model.player.CY = 10;
+                    logic.RespawnPlayer();
                 }
             });
 
@@ -139,10 +134,8 @@
             if (this.model.player.CY > this.model.GameHeight)
             {
                 MessageBox.Show("Fail!");
-
-                // TODO impement respawn method in GameLogic
-                this.model.player.CX = 10;
-                this.model.player.CY = 10;
+          
+                logic.RespawnPlayer();
                 this.logic.DecreasePlayerLife();
             }
 
