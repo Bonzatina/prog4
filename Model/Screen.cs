@@ -14,7 +14,7 @@ namespace Model
         public GroundLine groundLine;
         public List<SpecialItem> specialItems;
         public List<Enemy> enemies;
-        public List<Bullet> bullets = new List<Bullet>();
+        public List<Bullet> enemiesBullets = new List<Bullet>();
         public List<Bullet> playerBullets = new List<Bullet>();
         public DoorNextScreen doorNextScreen;
  

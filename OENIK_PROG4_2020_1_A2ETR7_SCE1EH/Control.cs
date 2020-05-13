@@ -47,33 +47,34 @@
 
         private void Bullets_timer_Tick(object sender, EventArgs e)
         {
-            this.model.screen.playerBullets?.ForEach(bulet => bulet.Move());
+            //this.model.screen.playerBullets?.ForEach(bulet => bulet.Move());
             this.model.screen.enemies?.ForEach(enemy =>
             {
                 if (enemy.bullet == null)
                 {
                     // TODO continue with bullets
                     enemy.EnemyShoot();
-                    model.screen.bullets.Add(enemy.bullet);
+                    logic.AddEnemyBullet(enemy.bullet);
                     return;
                 }
                 else
                 {
                     enemy.bullet.Move();
                     PathGeometry combGeoBulletVSGround = enemy.bullet.CombinedGeos(this.model.screen.groundLine);
+                    double bulletCx = (enemy.bullet.RealArea.Bounds.Right + enemy.bullet.RealArea.Bounds.Left) / 2;
                     if (combGeoBulletVSGround.GetArea() > 0 ||
-                    enemy.bullet.CX < 0 || enemy.bullet.CY < 0 ||
-                    enemy.bullet.CY > this.model.GameHeight || enemy.bullet.CX > this.model.GameWidth)
+                    bulletCx < 0 || enemy.bullet.CY < 0 ||
+                    enemy.bullet.CY > this.model.GameHeight || bulletCx > this.model.GameWidth)
                     {
                         // TODO rework it, issue to remove bullet both from List and from enemy. or totally rework
-                        model.screen.bullets.RemoveAt(model.screen.enemies.IndexOf(enemy));
+                        logic.RemoveEnemyBullet(enemy.bullet);
                         enemy.bullet = null;
                     }
 
                     PathGeometry combGeoBulletVSPlayer = enemy.bullet?.CombinedGeos(model.player);
                     if (combGeoBulletVSPlayer != null && combGeoBulletVSPlayer.GetArea() > 0)
                     {
-                        model.screen.bullets.RemoveAt(model.screen.enemies.IndexOf(enemy));
+                        logic.RemoveEnemyBullet(enemy.bullet);
                         enemy.bullet = null;
                         logic.DecreasePlayerLife();                        
                         logic.RespawnPlayer();
@@ -89,57 +90,55 @@
             PathGeometry combGeoPlayerVSGround = this.model.screen.groundLine.CombinedGeos(this.model.player);
             if (combGeoPlayerVSGround.GetArea() == 0)
             {
-                this.logic.MovePlayer(Direction.Down);
+                logic.MovePlayer(Direction.Down);
             }
             else if (combGeoPlayerVSGround.GetArea() > 0)
             {    
-                this.logic.SetPlayerPosition(model.player.CX, combGeoPlayerVSGround.Bounds.Top - 48);
+                logic.SetPlayerPosition(model.player.CX, combGeoPlayerVSGround.Bounds.Top - 48);
             }
 
             // can't moove props used in WallItem
-            this.model.player.CantMoveRight = false;
-            this.model.player.CantMoveLeft = false;
+            logic.ResetCantPlayerMoove();
             SpecialItem toRemove = null;
-            this.model.screen.specialItems?.ForEach(item =>
+            model.screen.specialItems?.ForEach(item =>
             {
                 PathGeometry combGeoPlayerVSSpecialItem = item.CombinedGeos(this.model.player);
                 if (combGeoPlayerVSSpecialItem.GetArea() > 10)
                 {
-                    this.logic.OnPlayerPickUpItem(item);
+                    logic.OnPlayerPickUpItem(item);
                     toRemove = item.toRemove ? item : null;
                 }
             });
-            this.model.screen.specialItems?.Remove(toRemove);
+            model.screen.specialItems?.Remove(toRemove);
 
-            this.model.screen.enemies?.ForEach(enemy =>
+            model.screen.enemies?.ForEach(enemy =>
             {
                 // enemy.CY += 10;
                 PathGeometry combGeoPlayerVSSpecialItem = enemy.CombinedGeos(model.player);
                 if (combGeoPlayerVSSpecialItem.GetArea() > 0)
                 {         
-                    this.logic.DecreasePlayerLife();
+                    logic.DecreasePlayerLife();
                     logic.RespawnPlayer();
                 }
             });
 
-            if (this.model.screen.doorNextScreen != null)
+            if (model.screen.doorNextScreen != null)
             {
                 PathGeometry combGeoPlayerVSDoorNextScreen = this.model.screen.doorNextScreen.CombinedGeos(this.model.player);
                 if (combGeoPlayerVSDoorNextScreen.GetArea() > 0)
                 {
-                    this.logic.ChangeScreen();
+                    logic.ChangeScreen();
                 }
             }
 
-            if (this.model.player.CY > this.model.GameHeight)
+            if (model.player.CY > model.GameHeight)
             {
                 MessageBox.Show("Fail!");
           
                 logic.RespawnPlayer();
-                this.logic.DecreasePlayerLife();
+                logic.DecreasePlayerLife();
             }
-
-            this.InvalidateVisual();
+            InvalidateVisual();
         }
 
         private void Win_KeyDown(object sender, KeyEventArgs e)
@@ -154,7 +153,7 @@
                     MessageBox.Show(this.model.player.CX.ToString(), cy.ToString()); break; // dev
             }
 
-            this.InvalidateVisual();
+            InvalidateVisual();
         }
 
         protected override void OnRender(DrawingContext drawingContext)

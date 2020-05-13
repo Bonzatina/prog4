@@ -31,7 +31,7 @@
             //Console.WriteLine(model.screen.bullets.Count());
             //Console.WriteLine(model.screen.playerBullets.Count);
             model.screen.playerBullets?.ForEach(bulet => ctx.DrawGeometry(Brushes.Brown, new Pen(Brushes.Black, 2), bulet.RealArea));
-            model.screen.bullets?.ForEach(bulet => ctx.DrawGeometry(Brushes.Brown, new Pen(Brushes.Black, 2), bulet.RealArea));
+            model.screen.enemiesBullets?.ForEach(bulet => ctx.DrawGeometry(Brushes.Brown, new Pen(Brushes.Black, 2), bulet.RealArea));
             //Console.WriteLine(model.player.Lives);
             for (int i = 0; i < model.player.Lives; i++)
             {

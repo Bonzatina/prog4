@@ -54,6 +54,12 @@
             model.player.CY = cy;
         }
 
+        public void ResetCantPlayerMoove()
+        {
+            model.player.CantMoveRight = false;
+            model.player.CantMoveLeft = false;
+        }
+
         public void PlayerShoot()
         {
             this.model.player.PlayerShoot();
@@ -75,7 +81,7 @@
                 enemy.area.Transform = tg;
                 enemy.area = enemy.area.GetFlattenedPathGeometry();
             });
-            model.screen.bullets?.ForEach(bullet => {
+            model.screen.enemiesBullets?.ForEach(bullet => {
                 bullet.area.Transform = tg;
                 bullet.area = bullet.area.GetFlattenedPathGeometry();
             });
@@ -169,27 +175,27 @@
 
         public List<Bullet> GetAllBullets()
         {
-            return model.screen.bullets;
+            return model.screen.enemiesBullets;
         }
 
-        public void AddBullet(Bullet bullet)
+        public void AddEnemyBullet(Bullet bullet)
         {
-            model.screen.bullets.ToList().Add(bullet);
+            model.screen.enemiesBullets.Add(bullet);
         }
 
         public void AddBullets(List<Bullet> bullets)
         {
             foreach (Bullet item in bullets)
             {
-                this.AddBullet(item);
+                this.AddEnemyBullet(item);
             }
         }
 
-        public bool RemoveBullet(Bullet bullet) // returns false if bullet was not found.
+        public bool RemoveEnemyBullet(Bullet bullet) // returns false if bullet was not found.
         {
-            if (model.screen.bullets.Contains(bullet))
+            if (model.screen.enemiesBullets.Contains(bullet))
             {
-                model.screen.bullets.ToList().Remove(bullet);
+                model.screen.enemiesBullets.Remove(bullet);
                 return true;
             }
             return false;
@@ -201,7 +207,7 @@
             foreach (Bullet item in bullets)
             {
                 output = false;
-                if (this.RemoveBullet(item))
+                if (this.RemoveEnemyBullet(item))
                 {
                     output = true;
                 }
@@ -211,7 +217,7 @@
 
         public void RemoveAllBullets()
         {
-            model.screen.bullets.Clear();
+            model.screen.enemiesBullets.Clear();
         }
 
         public void SetPlayerScoreTo(int amount)
