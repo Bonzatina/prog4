@@ -43,5 +43,15 @@ namespace Tests
             logic.SetPlayerPosition(5, 5);
             Assert.That(model.player.CX == 5 & model.player.CY == 5);
         }
+
+        [Test]
+        public void GivenPlayerHasNotDied_AndPlayerDies_PlayerPositionIsSetToRespawnPosition()
+        {
+            GameModel model = new GameModel(1, 1);
+            GameLogic logic = new GameLogic(model);
+            model.player.Lives = 0;
+            logic.DecreasePlayerLife();
+            Assert.That(model.player.CX == model.RespawnCX && model.player.CY == model.RespawnCY);
+        }
     }
 }
