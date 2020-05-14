@@ -34,5 +34,14 @@ namespace Tests
             int playerLivesAfter = model.player.Lives;
             Assert.That(playerLivesBefore < playerLivesAfter);
         }
+
+        [Test]
+        public void GivenPlayerPositionWasNotModified_WhenModifyingPlayerPosition_ItIsModifiedCorrectly()
+        {
+            GameModel model = new GameModel(1, 1);
+            GameLogic logic = new GameLogic(model);
+            logic.SetPlayerPosition(5, 5);
+            Assert.That(model.player.CX == 5 & model.player.CY == 5);
+        }
     }
 }
