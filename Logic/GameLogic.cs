@@ -62,7 +62,11 @@
 
         public void PlayerShoot()
         {
-             Bullet bullet = this.model.player.PlayerShoot();
+            if (model.player.CantShoot)
+            {
+                return;
+            }
+            Bullet bullet = this.model.player.PlayerShoot();
             model.screen.playerBullets.Add(bullet);
         }
          public bool RemovePlayerBullet(Bullet bullet)

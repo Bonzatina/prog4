@@ -15,6 +15,7 @@ namespace Model
         public double PreviosCX { get; set; }
         public bool CantMoveRight { get; set; } = false;
         public bool CantMoveLeft { get; set; } = false;
+        public bool CantShoot { get; set; } = false;
         public List<Bullet> bullets { get; set; }
 
         public int Lives
@@ -48,6 +49,7 @@ namespace Model
 
         public Bullet PlayerShoot()
         {
+            CantShoot = true;
             int dir = this.PreviosCX < this.CX ? 5 : -5;
             Bullet bullet = new StandardBullet(this.RealArea.Bounds.Left,
            (this.RealArea.Bounds.Top + this.RealArea.Bounds.Bottom) / 2 - GameModel.ZeroAxios,

@@ -16,6 +16,7 @@
         private GameRenderer renderer;
         private DispatcherTimer timer;
         private DispatcherTimer bulletsTimer;
+        private DispatcherTimer playerStaminaTimer;
 
         public Control()
         {
@@ -27,8 +28,10 @@
         {
             timer.Stop();
             bulletsTimer.Stop();
+            playerStaminaTimer.Stop();
             this.timer = null;
             this.bulletsTimer = null;
+            this.playerStaminaTimer = null;
         }
 
         private void Control_Loaded(object sender, RoutedEventArgs e)
@@ -49,9 +52,19 @@
                 this.bulletsTimer.Interval = TimeSpan.FromMilliseconds(50);
                 this.bulletsTimer.Tick += this.Bullets_timer_Tick;
                 this.bulletsTimer.Start();
+
+                this.playerStaminaTimer = new DispatcherTimer();
+                this.playerStaminaTimer.Interval = TimeSpan.FromMilliseconds(500);
+                this.playerStaminaTimer.Tick += PlayerStaminaTimer_Tick;
+                this.playerStaminaTimer.Start();               
             }
 
             this.InvalidateVisual();
+        }
+
+        private void PlayerStaminaTimer_Tick(object sender, EventArgs e)
+        {
+            model.player.CantShoot = false;
         }
 
         private void Bullets_timer_Tick(object sender, EventArgs e)
