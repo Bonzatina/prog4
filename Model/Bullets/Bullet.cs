@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace Model
 {
-    public abstract class Bullet : GameItem
+    public abstract class Bullet : GameItem, IBullet
     {
         private int damage;
         private double DX;
