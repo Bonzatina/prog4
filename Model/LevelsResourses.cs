@@ -82,7 +82,7 @@ namespace Model
             List<Enemy> enemies1 = new List<Enemy>();
             Geometry mediumEnemyShape1 = GameShapes.gameShapes["mediumEnemyShape"];
             TransformGroup mediumEnemyShape1Transform = new TransformGroup();
-            mediumEnemyShape1Transform.Children.Add(new TranslateTransform(450, 35));
+            mediumEnemyShape1Transform.Children.Add(new TranslateTransform(450, 40));
             mediumEnemyShape1.Transform = mediumEnemyShape1Transform;
             mediumEnemyShape1 = mediumEnemyShape1.GetFlattenedPathGeometry();
 

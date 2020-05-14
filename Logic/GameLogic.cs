@@ -62,8 +62,22 @@
 
         public void PlayerShoot()
         {
-            this.model.player.PlayerShoot();
-            model.screen.playerBullets.Add(this.model.player.bullets.Last());
+            if (model.player.CantShoot)
+            {
+                return;
+            }
+            Bullet bullet = this.model.player.PlayerShoot();
+            model.screen.playerBullets.Add(bullet);
+        }
+         public bool RemovePlayerBullet(Bullet bullet)
+        {
+            if (model.screen.playerBullets.Contains(bullet))
+            {
+                // TODO 
+                model.screen.playerBullets.Remove(bullet);
+                return true;
+            }
+            return false;
         }
 
         public void RotateSreen()
@@ -153,9 +167,9 @@
 
         public bool RemoveEnemy(Enemy enemy) // returns false if enemy was not found.
         {
-            if (model.screen.enemies.Contains(enemy))
+            if (model.screen.enemies != null && model.screen.enemies.Contains(enemy))
             {
-                model.screen.enemies.ToList().Remove(enemy);
+                model.screen.enemies.Remove(enemy);
                 return true;
             }
             return false;
