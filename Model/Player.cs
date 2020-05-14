@@ -46,12 +46,14 @@ namespace Model
             this.bullets = new List<Bullet>();
         }
 
-        public void PlayerShoot()
+        public Bullet PlayerShoot()
         {
             int dir = this.PreviosCX < this.CX ? 5 : -5;
-            this.bullets.Add(new StandardBullet(this.RealArea.Bounds.Left,
+            Bullet bullet = new StandardBullet(this.RealArea.Bounds.Left,
            (this.RealArea.Bounds.Top + this.RealArea.Bounds.Bottom) / 2 - GameModel.ZeroAxios,
-           dir, 0));
+           dir, 0);
+            this.bullets.Add(bullet);
+            return bullet;
 
         }
     }

@@ -56,7 +56,38 @@
 
         private void Bullets_timer_Tick(object sender, EventArgs e)
         {
-            //this.model.screen.playerBullets?.ForEach(bulet => bulet.Move());
+            Bullet toRemovePlayerBullet = null;
+            Enemy toRemoveEnemy = null;
+            this.model.screen.playerBullets?.ForEach(playerBullet => {
+                playerBullet.Move();
+      
+                model.screen.enemies?.ForEach(enemy =>
+                {
+                    PathGeometry combGeoBulletVSEnemy = playerBullet.CombinedGeos(enemy);
+                    if (combGeoBulletVSEnemy != null && combGeoBulletVSEnemy.GetArea() > 0)
+                    {                 
+                        toRemoveEnemy = enemy;
+                        toRemovePlayerBullet = playerBullet;
+                        logic.RemoveEnemyBullet(toRemoveEnemy.bullet);
+                        playerBullet = null;
+                    }
+                });
+                if (playerBullet != null)
+                {
+                    PathGeometry combGeoBulletVSGround = playerBullet?.CombinedGeos(this.model.screen.groundLine);
+                    double bulletCx = (playerBullet.RealArea.Bounds.Right + playerBullet.RealArea.Bounds.Left) / 2;
+                    if (combGeoBulletVSGround != null && combGeoBulletVSGround.GetArea() > 0 ||
+                    bulletCx < 0 || playerBullet.CY < 0 ||
+                    playerBullet.CY > this.model.GameHeight || bulletCx > this.model.GameWidth)
+                    {
+                        toRemovePlayerBullet = playerBullet;
+                        //enemyBullet = null;
+                    }
+                }
+            });
+            logic.RemoveEnemy(toRemoveEnemy);
+            logic.RemovePlayerBullet(toRemovePlayerBullet);     
+     
             this.model.screen.enemies?.ForEach(enemy =>
             {
                 if (enemy.bullet == null)
@@ -66,31 +97,30 @@
                     logic.AddEnemyBullet(enemy.bullet);
                     return;
                 }
-                else
-                {
-                    enemy.bullet.Move();
-                    PathGeometry combGeoBulletVSGround = enemy.bullet.CombinedGeos(this.model.screen.groundLine);
-                    double bulletCx = (enemy.bullet.RealArea.Bounds.Right + enemy.bullet.RealArea.Bounds.Left) / 2;
-                    if (combGeoBulletVSGround.GetArea() > 0 ||
+                Bullet toRemoveEnemyBullet = null;
+
+                enemy.bullet.Move();
+                PathGeometry combGeoBulletVSGround = enemy.bullet.CombinedGeos(this.model.screen.groundLine);
+                double bulletCx = (enemy.bullet.RealArea.Bounds.Right + enemy.bullet.RealArea.Bounds.Left) / 2;
+                if (combGeoBulletVSGround.GetArea() > 0 ||
                     bulletCx < 0 || enemy.bullet.CY < 0 ||
                     enemy.bullet.CY > this.model.GameHeight || bulletCx > this.model.GameWidth)
                     {
-                        // TODO rework it, issue to remove bullet both from List and from enemy. or totally rework
-                        logic.RemoveEnemyBullet(enemy.bullet);
+                        toRemoveEnemyBullet = enemy.bullet;
                         enemy.bullet = null;
                     }
 
-                    PathGeometry combGeoBulletVSPlayer = enemy.bullet?.CombinedGeos(model.player);
-                    if (combGeoBulletVSPlayer != null && combGeoBulletVSPlayer.GetArea() > 0)
+                PathGeometry combGeoBulletVSPlayer = enemy.bullet?.CombinedGeos(model.player);
+                if (combGeoBulletVSPlayer != null && combGeoBulletVSPlayer.GetArea() > 0)
                     {
-                        logic.RemoveEnemyBullet(enemy.bullet);
+                        toRemoveEnemyBullet = enemy.bullet;
                         enemy.bullet = null;
-                        logic.DecreasePlayerLife();                        
+                        logic.DecreasePlayerLife();
                         logic.RespawnPlayer();
                     }
-                }
-
-            });
+                logic.RemoveEnemyBullet(toRemoveEnemyBullet);
+            });            
+          
             this.InvalidateVisual();
         }
 
