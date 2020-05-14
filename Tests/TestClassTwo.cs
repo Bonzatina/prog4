@@ -23,5 +23,16 @@ namespace Tests
             logic.AddEnemy(new BossEnemy(Geometry.Empty));
             Assert.That(logic.GetAllEnemies().Count>0, Is.True);
         }
+
+        [Test]
+        public void GivenPlayerLivesHaveNotBeenModified_WhenIncreasingPlayerLives_ItIsIncreased()
+        {
+            GameModel model = new GameModel(1, 1);
+            GameLogic logic = new GameLogic(model);
+            int playerLivesBefore = model.player.Lives;
+            logic.IncreasePlayerLife();
+            int playerLivesAfter = model.player.Lives;
+            Assert.That(playerLivesBefore < playerLivesAfter);
+        }
     }
 }
