@@ -66,6 +66,18 @@ namespace Model
             spikesShape_1_2.Transform = spikesShape_1_2_Tranform;
             spikesShape_1_2 = spikesShape_1_2.GetFlattenedPathGeometry(); ;
 
+            Geometry plusScoresShape1 = GameShapes.gameShapes["plusScoresShape"];
+            TransformGroup plusScoresShape1Transform = new TransformGroup();
+            plusScoresShape1Transform.Children.Add(new TranslateTransform(480, 40));
+            plusScoresShape1.Transform = plusScoresShape1Transform;
+            plusScoresShape1 = plusScoresShape1.GetFlattenedPathGeometry();
+
+            Geometry plusScoresShape2 = GameShapes.gameShapes["plusScoresShape"];
+            TransformGroup plusScoresShape2Transform = new TransformGroup();
+            plusScoresShape2Transform.Children.Add(new TranslateTransform(750, 140));
+            plusScoresShape2.Transform = plusScoresShape2Transform;
+            plusScoresShape2 = plusScoresShape2.GetFlattenedPathGeometry();
+
 
             Geometry wallShape1 = GameShapes.gameShapes["wallShape"];
             TransformGroup wallShape1Tranform = new TransformGroup();
@@ -77,6 +89,8 @@ namespace Model
             specialItems1.Add(new DecreaseHealthItem(1, Brushes.Red, new Pen(Brushes.Black, 2), spikesShape1));
             specialItems1.Add(new DecreaseHealthItem(1, Brushes.Red, new Pen(Brushes.Black, 2), spikesShape_1_2));
             specialItems1.Add(new WallItem(Brushes.DarkKhaki, new Pen(Brushes.DarkGray, 2), wallShape1));
+            specialItems1.Add(new IncreasePlayerScoreItem(Brushes.Gold, new Pen(Brushes.Red, 2), plusScoresShape1));
+            specialItems1.Add(new IncreasePlayerScoreItem(Brushes.Gold, new Pen(Brushes.Red, 2), plusScoresShape2));
 
             // fill enemies ...
             List<Enemy> enemies1 = new List<Enemy>();
@@ -179,6 +193,13 @@ namespace Model
             GeometryGroup mediumEnemyShape = new GeometryGroup();
             mediumEnemyShape.Children.Add(new EllipseGeometry(new Rect(0, 0, 10, 50)));
             gameShapes.Add("mediumEnemyShape", mediumEnemyShape);
+
+            Geometry plusScoresShape = new RectangleGeometry(new Rect(0, 0, 10, 10));
+            TransformGroup tg = new TransformGroup();
+            tg.Children.Add(new RotateTransform(45));
+            plusScoresShape.Transform = tg;
+            plusScoresShape = plusScoresShape.GetFlattenedPathGeometry();
+            gameShapes.Add("plusScoresShape", plusScoresShape);
             //new RectangleGeometry(new Rect(0, 0, 10, 50))
 
         }

@@ -1,5 +1,6 @@
 ﻿namespace Renderer
 {
+    using System;
     using System.Windows;
     using System.Windows.Media;
     using Model;
@@ -9,6 +10,7 @@
         GameModel model;
         public Rect bgRect;
         public int livesCounter;
+        FormattedText scoresCounter;
 
         public GameRenderer(GameModel model)
         {
@@ -21,6 +23,19 @@
             DrawBackground(ctx);
             DrawLevel(ctx);
             DrawPlayer(ctx);
+            DrawText(ctx);
+        }
+
+        private void DrawText(DrawingContext ctx)
+        {
+            scoresCounter = new FormattedText(
+                  model.player.score.ToString(),
+                  System.Globalization.CultureInfo.CurrentCulture,
+                  FlowDirection.LeftToRight,
+                   new Typeface("Arial"),
+                  16,
+                  Brushes.Black);
+            ctx.DrawText(scoresCounter, new Point(1200, 10));
         }
 
         private void DrawLevel(DrawingContext ctx)
