@@ -13,8 +13,9 @@ namespace Model
         public double GameHeight { get; private set; }
         public static int ZeroAxios { get; private set; }
         public Player player;
+        public LevelsResourses levelsResourses;
         public Screen screen;
-        public int RespawnCX { get; set; } // Marcell: not sure which class should have the responsibility of storing the respawnpoint ? Should the constructor require input for setting the spawnpoint, like gamewidth & height ?
+        public int RespawnCX { get; set; }
         public int RespawnCY { get; set; }
 
         public GameModel(double w, double h)
@@ -28,8 +29,8 @@ namespace Model
             {
                 Lives = 3
             };
-
-            screen = LevelsResourses.screens["screen_1"];
+            levelsResourses = new LevelsResourses();
+            screen = levelsResourses.screens["screen_1"];
         }
     }
 }

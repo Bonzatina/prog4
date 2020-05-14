@@ -106,11 +106,11 @@
 
         public void DecreasePlayerLife()
         {
-            if (model.player.Lives > 0)
-            {
+            //if (model.player.Lives > 0)
+            //{
                 model.player.Lives--;
                 RespawnPlayer();
-            }
+            //}
         }
 
         public void SetLivesOfPlayerTo(int numberOfLives)
@@ -124,6 +124,10 @@
         public void OnPlayerPickUpItem(SpecialItem item)
         {
             item.OnPlayerPickUp(this.model);
+            if (item.toRespawn)
+            {
+                RespawnPlayer();
+            }
         }
 
         public List<Enemy> GetAllEnemies()
@@ -245,8 +249,12 @@
 
         public void RespawnPlayer()
         {
-            model.player.CX = model.RespawnCX;
-            model.player.CY = model.RespawnCY;
+            if (model.player.Lives >= 0)
+            {
+                model.player.CX = model.RespawnCX;
+                model.player.CY = model.RespawnCY;
+            }
+
         }
     }
 }
