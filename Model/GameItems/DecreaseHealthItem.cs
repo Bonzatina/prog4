@@ -21,14 +21,13 @@ namespace Model
         public DecreaseHealthItem(int lives, Brush brush, Pen pen, Geometry area) : base(brush, pen, area)
         {
             this.Lives = lives;
+            this.toRespawn = true;
         }
 
         public override void OnPlayerPickUp(GameModel model)
         {
             // TODO check if it is ok that we use model here, may be better move somehow to logic
-            model.player.Lives -= this.Lives;
-            model.player.CX = model.RespawnCX;
-            model.player.CY = model.RespawnCY;
+            model.player.Lives -= this.Lives;    
         }
     }
 }

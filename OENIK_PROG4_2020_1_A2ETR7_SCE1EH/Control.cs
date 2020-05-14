@@ -20,6 +20,15 @@
         public Control()
         {
             this.Loaded += this.Control_Loaded;
+            this.Unloaded += Control_Unloaded;
+        }
+
+        private void Control_Unloaded(object sender, RoutedEventArgs e)
+        {
+            timer.Stop();
+            bulletsTimer.Stop();
+            this.timer = null;
+            this.bulletsTimer = null;
         }
 
         private void Control_Loaded(object sender, RoutedEventArgs e)
@@ -137,6 +146,11 @@
           
                 logic.RespawnPlayer();
                 logic.DecreasePlayerLife();
+            }
+            if (model.player.Lives < 0)
+            {      
+                MessageBox.Show("You loose :( ");     
+                Window.GetWindow(this).Close();
             }
             InvalidateVisual();
         }

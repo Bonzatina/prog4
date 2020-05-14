@@ -10,10 +10,10 @@ using System.Windows.Media;
 
 namespace Model
 {
-    public static class LevelsResourses
+    public  class LevelsResourses
     {
-        public static Dictionary<string, Screen> screens = new Dictionary<string, Screen>();
-        static LevelsResourses()
+        public Dictionary<string, Screen> screens = new Dictionary<string, Screen>();
+        public LevelsResourses()
         {  
             // first screen
 

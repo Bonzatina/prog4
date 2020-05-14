@@ -22,14 +22,17 @@ namespace Model
             get { return lives; }
             set 
             {
-                if (value < 0)
-                {
-                    throw new ArgumentException("Player's lives can not be less than zero.", nameof(Lives));
-                }
-                else 
-                { 
-                    lives = value; 
-                }
+                // Sergei: comment it out to use Game Window Close() in Control at lives < 0
+                // TODO figure out
+                //if (value < 0)
+                //{
+                //    throw new ArgumentException("Player's lives can not be less than zero.", nameof(Lives));
+                //}
+                //else 
+                //{ 
+                //    lives = value; 
+                //}
+                lives = value;
             }
         }
 
