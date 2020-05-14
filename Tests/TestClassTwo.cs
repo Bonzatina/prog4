@@ -53,5 +53,27 @@ namespace Tests
             logic.DecreasePlayerLife();
             Assert.That(model.player.CX == model.RespawnCX && model.player.CY == model.RespawnCY);
         }
+
+        [Test]
+        public void GivenPlayerHasNotPickedUpItem_AndPlayerPicksUpItem_PickedUpItemAffectsPlayer()
+        {
+            GameModel model = new GameModel(1, 1);
+            GameLogic logic = new GameLogic(model);
+            int livesBefore = model.player.Lives;
+            logic.OnPlayerPickUpItem(new IncreaseHealthItem(0, Brushes.Black, new Pen(), model.screen.groundLine.RealArea));
+            int livesAfter = model.player.Lives;
+            Assert.That(livesBefore != livesAfter);
+        }
+
+        [Test]
+        public void GivenPlayerScoreHasNotChangedYet_AndPlayerScoreIsIncremented_ItIsIncremented()
+        {
+            GameModel model = new GameModel(1, 1);
+            GameLogic logic = new GameLogic(model);
+            int scoreBefore = model.player.score;
+            logic.AddAmountToPlayerScore(1);
+            int scoreAfter = model.player.score;
+            Assert.That(scoreBefore < scoreAfter);
+        }
     }
 }
