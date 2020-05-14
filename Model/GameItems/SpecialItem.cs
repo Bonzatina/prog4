@@ -10,6 +10,7 @@ namespace Model
     public class SpecialItem : GameItem, ISpecialItem
     {
         public bool toRemove = false;
+        public bool toRespawn = false;
         public Brush brush;
         public Pen pen;
 

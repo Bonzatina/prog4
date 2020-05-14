@@ -12,9 +12,10 @@ namespace Model.GameItems
         public int Score { get; set; }
 
 
-        public IncreasePlayerScoreItem(int lives, Brush brush, Pen pen, Geometry area) : base(brush, pen, area)
+        public IncreasePlayerScoreItem(Brush brush, Pen pen, Geometry area) : base(brush, pen, area)
         {
-            this.Score = lives;
+            Random r = new Random();
+            this.Score = r.Next(12, 48);
         }
 
         public override void OnPlayerPickUp(GameModel model)

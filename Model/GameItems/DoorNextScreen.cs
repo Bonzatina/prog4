@@ -17,7 +17,7 @@ namespace Model
 
         public override void OnPlayerPickUp(GameModel model)
         {
-            model.screen = LevelsResourses.screens[this.NextScreen];
+            model.screen = model.levelsResourses.screens[this.NextScreen];
         }
     }
 }
