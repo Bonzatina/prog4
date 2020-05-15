@@ -15,6 +15,7 @@ namespace Model
         public double PreviosCX { get; set; }
         public bool CantMoveRight { get; set; } = false;
         public bool CantMoveLeft { get; set; } = false;
+        public bool CantShoot { get; set; } = false;
         public List<Bullet> bullets { get; set; }
 
         public int Lives
@@ -22,14 +23,17 @@ namespace Model
             get { return lives; }
             set 
             {
-                if (value < 0)
-                {
-                    throw new ArgumentException("Player's lives can not be less than zero.", nameof(Lives));
-                }
-                else 
-                { 
-                    lives = value; 
-                }
+                // Sergei: comment it out to use Game Window Close() in Control at lives < 0
+                // TODO figure out
+                //if (value < 0)
+                //{
+                //    throw new ArgumentException("Player's lives can not be less than zero.", nameof(Lives));
+                //}
+                //else 
+                //{ 
+                //    lives = value; 
+                //}
+                lives = value;
             }
         }
 
@@ -43,12 +47,15 @@ namespace Model
             this.bullets = new List<Bullet>();
         }
 
-        public void PlayerShoot()
+        public Bullet PlayerShoot()
         {
+            CantShoot = true;
             int dir = this.PreviosCX < this.CX ? 5 : -5;
-            this.bullets.Add(new StandardBullet(this.RealArea.Bounds.Left,
+            Bullet bullet = new StandardBullet(this.RealArea.Bounds.Left,
            (this.RealArea.Bounds.Top + this.RealArea.Bounds.Bottom) / 2 - GameModel.ZeroAxios,
-           dir, 0));
+           dir, 0);
+            this.bullets.Add(bullet);
+            return bullet;
 
         }
     }
