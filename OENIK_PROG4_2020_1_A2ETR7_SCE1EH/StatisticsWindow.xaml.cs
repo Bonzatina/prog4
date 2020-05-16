@@ -10,26 +10,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Statistics.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class StatisticsWindow : Window
     {
-        public FinalScoreViewModel finalScoreObj;
-        public MainWindow()
+        FinalScoreViewModel FinalScoreObj;
+        public FinalScoreViewModel finalScore { get { return FinalScoreObj; } }
+        public StatisticsWindow()
         {
             InitializeComponent();
         }
 
-        public MainWindow(FinalScoreViewModel vm) : this()
+        public StatisticsWindow(FinalScoreViewModel finalScore) : this()
         {
-            finalScoreObj = vm;
-            this.DataContext = finalScoreObj;
+            FinalScoreObj = finalScore;
+            this.DataContext = FinalScoreObj;
         }
     }
 }

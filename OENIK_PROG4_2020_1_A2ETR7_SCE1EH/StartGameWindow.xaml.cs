@@ -19,14 +19,18 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
     /// </summary>
     public partial class StartGameWindow : Window
     {
+        FinalScoreViewModel FinalScoreObj;
+        public FinalScoreViewModel finalScoreObj { get { return FinalScoreObj; } }
         public StartGameWindow()
         {
             InitializeComponent();
-        }
+            FinalScoreObj = new FinalScoreViewModel();   
+        } 
+
 
         private void StartNewGame(object sender, RoutedEventArgs e)
         {
-            Window gameWindow = new MainWindow();
+            Window gameWindow = new MainWindow(FinalScoreObj);
             gameWindow.ShowDialog();       
 
         }
@@ -38,7 +42,8 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
 
         private void ViewStatistics(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Sorry, not implemented yet");
+            Window gameWindow = new StatisticsWindow(FinalScoreObj);
+            gameWindow.ShowDialog();
         }
     }
 }

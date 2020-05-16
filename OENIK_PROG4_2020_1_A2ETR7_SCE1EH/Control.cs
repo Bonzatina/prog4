@@ -186,14 +186,18 @@
             if (model.player.CY > model.GameHeight)
             {
                 MessageBox.Show("Fail!");
-          
-                logic.RespawnPlayer();
                 logic.DecreasePlayerLife();
+                logic.RespawnPlayer();
+      
             }
             if (model.player.Lives < 0)
             {      
-                MessageBox.Show("You loose :( ");     
+                MessageBox.Show("You loose :( ");
+
+                
+                Window saveResultWindow = new SaveResultWindow(((FinalScoreViewModel)Window.GetWindow(this).DataContext), model.player.score.ToString());
                 Window.GetWindow(this).Close();
+                saveResultWindow.ShowDialog();
             }
             InvalidateVisual();
         }
