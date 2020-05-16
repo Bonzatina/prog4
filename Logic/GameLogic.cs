@@ -22,13 +22,13 @@
 
         public void MovePlayer(Direction dir)
         {
-            this.model.player.PreviosCX = model.player.CX;
             if (dir == Direction.Right)
             {
                 if (model.player.CantMoveRight)
                 {
                     return;
                 }
+                this.model.player.PreviosCX = model.player.CX;
                 model.player.CX += 7;
             }
             if (dir == Direction.Left)
@@ -37,6 +37,7 @@
                 {
                     return;
                 }
+                this.model.player.PreviosCX = model.player.CX;
                 model.player.CX -= 7;
             }
             if (dir == Direction.Up)

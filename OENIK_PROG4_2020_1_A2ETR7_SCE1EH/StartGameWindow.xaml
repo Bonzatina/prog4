@@ -13,6 +13,7 @@
         <TextBlock HorizontalAlignment="Left" Height="22" Margin="85,179,0,0" TextWrapping="Wrap" Text="Left arrow: move left" VerticalAlignment="Top" Width="131"/>
         <TextBlock HorizontalAlignment="Left" Height="22" Margin="85,199,0,0" TextWrapping="Wrap" Text="Right arrow: move right" VerticalAlignment="Top" Width="131"/>
         <TextBlock HorizontalAlignment="Left" Height="22" Margin="85,221,0,0" TextWrapping="Wrap" Text="Space key: rotate screen" VerticalAlignment="Top" Width="131"/>
+        <TextBlock HorizontalAlignment="Left" Height="22" Margin="85,243,0,0" TextWrapping="Wrap" Text="Down arrow: Shoot!" VerticalAlignment="Top" Width="131"/>
 
     </Grid>
 </Window>

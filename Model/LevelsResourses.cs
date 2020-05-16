@@ -81,7 +81,7 @@ namespace Model
 
             Geometry wallShape1 = GameShapes.gameShapes["wallShape"];
             TransformGroup wallShape1Tranform = new TransformGroup();
-            wallShape1Tranform.Children.Add(new TranslateTransform(575, -100));
+            wallShape1Tranform.Children.Add(new TranslateTransform(575, -103));
             wallShape1.Transform = wallShape1Tranform;
             wallShape1 = wallShape1.GetFlattenedPathGeometry();
 
