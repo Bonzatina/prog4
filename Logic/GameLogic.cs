@@ -271,7 +271,7 @@
                 model.player.CX = model.RespawnCX;
                 model.player.CY = model.RespawnCY;
             }
-
+            return;
         }
     }
 }
