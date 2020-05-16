@@ -10,6 +10,9 @@
         <Button Click="StartNewGame"  Content="Start New Game" HorizontalAlignment="Left" Margin="85,124,0,0" VerticalAlignment="Top" Width="120" Height="50"/>
         <Button Click="LoadGame"  Content="Load Game State" HorizontalAlignment="Left" Margin="446,124,0,0" VerticalAlignment="Top" Width="120" Height="50"/>
         <Button Click="ViewStatistics"  Content="View Statistics" HorizontalAlignment="Left" Margin="261,251,0,0" VerticalAlignment="Top" Width="120" Height="50"/>
+        <TextBlock HorizontalAlignment="Left" Height="22" Margin="85,179,0,0" TextWrapping="Wrap" Text="Left arrow: move left" VerticalAlignment="Top" Width="131"/>
+        <TextBlock HorizontalAlignment="Left" Height="22" Margin="85,199,0,0" TextWrapping="Wrap" Text="Right arrow: move right" VerticalAlignment="Top" Width="131"/>
+        <TextBlock HorizontalAlignment="Left" Height="22" Margin="85,221,0,0" TextWrapping="Wrap" Text="Space key: rotate screen" VerticalAlignment="Top" Width="131"/>
 
     </Grid>
 </Window>
