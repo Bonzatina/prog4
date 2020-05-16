@@ -44,7 +44,7 @@ namespace Model
             this.CY += dy;
         }
 
-        public virtual void EnemyShoot()
+        public virtual void EnemyShoot(double playerCX)
         {
 
         }
