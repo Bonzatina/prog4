@@ -14,11 +14,12 @@ namespace Model.Enemies
         {
         }
 
-        public override void EnemyShoot()
-        {  
+        public override void EnemyShoot(double playerCX)
+        {
+            double bulletDirection = this.RealArea.Bounds.Left > playerCX ? -5 : 5;
             this.bullet = new StandardBullet(this.RealArea.Bounds.Left,
            (this.RealArea.Bounds.Top + this.RealArea.Bounds.Bottom) / 2 - GameModel.ZeroAxios,
-           5, 0);
+           bulletDirection, 0);
 
         }
     }

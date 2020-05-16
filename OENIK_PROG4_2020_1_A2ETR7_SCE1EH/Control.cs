@@ -106,7 +106,7 @@
                 if (enemy.bullet == null)
                 {
                     // TODO continue with bullets
-                    enemy.EnemyShoot();
+                    enemy.EnemyShoot(model.player.CX);
                     logic.AddEnemyBullet(enemy.bullet);
                     return;
                 }
