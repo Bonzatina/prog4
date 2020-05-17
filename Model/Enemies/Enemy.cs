@@ -22,7 +22,7 @@ namespace Model
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException("Enemy's health can not be less than zero.", nameof(Health)); // maybe its OK to have negative health, as the enemy will be removed anyways?
+                    throw new ArgumentException("Enemy's health can not be less than zero.", nameof(Health));
                 }
                 else
                 {

@@ -81,8 +81,7 @@
                 {
                     PathGeometry combGeoBulletVSEnemy = playerBullet.CombinedGeos(enemy);
                     if (combGeoBulletVSEnemy != null && combGeoBulletVSEnemy.GetArea() > 0)
-                    {                 
-                        //toRemoveEnemy = enemy;
+                    {
                         enemy.Health -= playerBullet.Damage;
                         toRemovePlayerBullet = playerBullet;
                         if (enemy.Health < 1)
@@ -90,8 +89,6 @@
                             toRemoveEnemy = enemy;
                             logic.RemoveEnemyBullet(toRemoveEnemy.bullet);
                         }
-                   
-                        //playerBullet = null;
                     }
                 });
                 if (playerBullet != null)
@@ -102,8 +99,7 @@
                     bulletCx < 0 || playerBullet.CY < 0 ||
                     playerBullet.CY > this.model.GameHeight || bulletCx > this.model.GameWidth)
                     {
-                        toRemovePlayerBullet = playerBullet;
-                        //enemyBullet = null;
+                        toRemovePlayerBullet = playerBullet;          
                     }
                 }
             });
@@ -114,7 +110,6 @@
             {
                 if (enemy.bullet == null)
                 {
-                    // TODO continue with bullets
                     enemy.EnemyShoot(model.player.CX);
                     logic.AddEnemyBullet(enemy.bullet);
                     return;
@@ -174,7 +169,6 @@
 
             model.screen.enemies?.ForEach(enemy =>
             {
-                // enemy.CY += 10;
                 PathGeometry combGeoPlayerVSSpecialItem = enemy.CombinedGeos(model.player);
                 if (combGeoPlayerVSSpecialItem.GetArea() > 0)
                 {         

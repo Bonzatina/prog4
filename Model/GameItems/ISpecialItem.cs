@@ -1,6 +1,6 @@
 ﻿namespace Model
 {
-    public interface ISpecialItem // needed for testing
+    public interface ISpecialItem
     {
         void OnPlayerPickUp(GameModel model);
     }

@@ -74,7 +74,6 @@
         {
             if (model.screen.playerBullets.Contains(bullet))
             {
-                // TODO 
                 model.screen.playerBullets.Remove(bullet);
                 return true;
             }
@@ -124,11 +123,9 @@
 
         public void DecreasePlayerLife()
         {
-            //if (model.player.Lives > 0)
-            //{
-                model.player.Lives--;
-                RespawnPlayer();
-            //}
+            model.player.Lives--;
+            RespawnPlayer();
+
         }
 
         public void SetLivesOfPlayerTo(int numberOfLives)
@@ -166,7 +163,7 @@
             }
         }
 
-        public bool RemoveEnemy(Enemy enemy) // returns false if enemy was not found.
+        public bool RemoveEnemy(Enemy enemy) 
         {
             if (model.screen.enemies != null && model.screen.enemies.Contains(enemy))
             {
@@ -176,7 +173,7 @@
             return false;
         }
 
-        public bool RemoveEnemies(List<Enemy> enemies) // if ANY of the enemies was not found, at the end of the process, output will be false;
+        public bool RemoveEnemies(List<Enemy> enemies)
         {
             bool output = false;
             foreach (Enemy item in enemies)
@@ -213,7 +210,7 @@
             }
         }
 
-        public bool RemoveEnemyBullet(Bullet bullet) // returns false if bullet was not found.
+        public bool RemoveEnemyBullet(Bullet bullet)
         {
             if (model.screen.enemiesBullets.Contains(bullet))
             {
@@ -223,7 +220,7 @@
             return false;
         }
 
-        public bool RemoveBullets(List<Bullet> bullets) // if ANY of the bullets was not found, at the end of the process, output will be false;
+        public bool RemoveBullets(List<Bullet> bullets)
         {
             bool output = false;
             foreach (Bullet item in bullets)

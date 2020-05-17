@@ -379,8 +379,6 @@ namespace Model
             plusScoresShape.Transform = tg;
             plusScoresShape = plusScoresShape.GetFlattenedPathGeometry();
             gameShapes.Add("plusScoresShape", plusScoresShape);
-            //new RectangleGeometry(new Rect(0, 0, 10, 50))
-
         }
     }
 }
