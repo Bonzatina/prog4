@@ -18,8 +18,8 @@ namespace Model.Enemies
         {
             double bulletDirection = this.RealArea.Bounds.Left > playerCX ? -5 : 5;
             this.bullet = new StandardBullet(this.RealArea.Bounds.Left,
-           (this.RealArea.Bounds.Top + this.RealArea.Bounds.Bottom) / 2 - GameModel.ZeroAxios,
-           bulletDirection, 0);
+            (this.RealArea.Bounds.Top + this.RealArea.Bounds.Bottom) / 2 - GameModel.ZeroAxios,
+            bulletDirection, 0);
 
         }
     }

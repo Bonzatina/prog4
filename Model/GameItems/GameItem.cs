@@ -20,7 +20,6 @@ namespace Model
             {
                 TransformGroup tg = new TransformGroup();
                 tg.Children.Add(new TranslateTransform(CX, CY));
-                //tg.Children.Add(new MatrixTransform(new Matrix(-1, 0, 0, 1, 0, CY)));
                 area.Transform = tg;
                 return area.GetFlattenedPathGeometry();
             }

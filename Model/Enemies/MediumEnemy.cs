@@ -26,8 +26,8 @@ namespace Model.Enemies
                 this.area = area.GetFlattenedPathGeometry();
             }
             this.bullet = new StandardBullet(this.RealArea.Bounds.Left,
-           (this.RealArea.Bounds.Top + this.RealArea.Bounds.Bottom) / 2 - GameModel.ZeroAxios,
-           bulletDirection, 0);
+            (this.RealArea.Bounds.Top + this.RealArea.Bounds.Bottom) / 2 - GameModel.ZeroAxios,
+            bulletDirection, 0);
 
             prevBulletDirection = bulletDirection;
         }
