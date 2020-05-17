@@ -79,10 +79,16 @@
                     PathGeometry combGeoBulletVSEnemy = playerBullet.CombinedGeos(enemy);
                     if (combGeoBulletVSEnemy != null && combGeoBulletVSEnemy.GetArea() > 0)
                     {                 
-                        toRemoveEnemy = enemy;
+                        //toRemoveEnemy = enemy;
+                        enemy.Health -= playerBullet.Damage;
                         toRemovePlayerBullet = playerBullet;
-                        logic.RemoveEnemyBullet(toRemoveEnemy.bullet);
-                        playerBullet = null;
+                        if (enemy.Health < 1)
+                        {
+                            toRemoveEnemy = enemy;
+                            logic.RemoveEnemyBullet(toRemoveEnemy.bullet);
+                        }
+                   
+                        //playerBullet = null;
                     }
                 });
                 if (playerBullet != null)

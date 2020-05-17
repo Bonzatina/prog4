@@ -13,6 +13,7 @@ namespace Model
     {
         private int health;
         public Bullet bullet { get; set; }
+        protected double prevBulletDirection { get; set; } = -5;
 
         public int Health
         {
