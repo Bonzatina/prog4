@@ -1,3 +1,31 @@
+git repo: https://bonzatina@bitbucket.org/bonzatina/oenik_prog4_2020_1_a2etr7_sce1eh.git
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------
+
+
+
+
 lives - /backend - add Lives prop to Player Model. add +/- live functions to GameLogic. /frontend - add lives on game screen. 
 --DONE
 
