@@ -1,0 +1,18 @@
+﻿<Window x:Class="OENIK_PROG4_2020_1_A2ETR7_SCE1EH.SaveResultWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OENIK_PROG4_2020_1_A2ETR7_SCE1EH"
+        mc:Ignorable="d"
+        Title="Save Result Window" Height="229.389" Width="373.794"
+        DataContext="{Binding VM}"
+        >
+    <Grid Background="DarkGray"  >
+        <Label Content="Enter you name" HorizontalAlignment="Left" Margin="22,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.541,-3.03"/>
+        <TextBox Text="{Binding Name}"  Background="Gray" HorizontalAlignment="Left" Height="23" Margin="131,78,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="125"/>
+        <TextBlock Text="{Binding FinalScore }" HorizontalAlignment="Left" Margin="283,79,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="14" Width="20" RenderTransformOrigin="0.444,-1.238"/>
+        <Button Click="Button_Click" Content="Save result" HorizontalAlignment="Left" Margin="146,131,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Window>

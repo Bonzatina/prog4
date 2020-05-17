@@ -71,6 +71,7 @@
     <Compile Include="GameItems\SpecialItem.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ModelClassDiagram.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

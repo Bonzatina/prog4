@@ -54,6 +54,7 @@
     <Compile Include="TestClassTwo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="TestsClassDiagram.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

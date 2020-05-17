@@ -8,7 +8,7 @@ namespace Model
 {
     public class StandardBullet : Bullet
     {
-        public StandardBullet(double cx, double cy, double dx, double dy) : base(cx, cy, dx, dy, 20)
+        public StandardBullet(double cx, double cy, double dx, double dy) : base(cx, cy, dx, dy, 75)
         {
 
         }

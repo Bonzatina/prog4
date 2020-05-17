@@ -36,6 +36,9 @@
 
         private void Control_Loaded(object sender, RoutedEventArgs e)
         {
+            //FinalScoreViewModel dataCntx = (FinalScoreViewModel)Window.GetWindow(this).DataContext;
+            //Console.WriteLine(dataCntx.loadGame);
+
             this.model = new GameModel(this.ActualWidth, this.ActualHeight);
             this.logic = new GameLogic(this.model);
             this.renderer = new GameRenderer(this.model);
@@ -79,10 +82,16 @@
                     PathGeometry combGeoBulletVSEnemy = playerBullet.CombinedGeos(enemy);
                     if (combGeoBulletVSEnemy != null && combGeoBulletVSEnemy.GetArea() > 0)
                     {                 
-                        toRemoveEnemy = enemy;
+                        //toRemoveEnemy = enemy;
+                        enemy.Health -= playerBullet.Damage;
                         toRemovePlayerBullet = playerBullet;
-                        logic.RemoveEnemyBullet(toRemoveEnemy.bullet);
-                        playerBullet = null;
+                        if (enemy.Health < 1)
+                        {
+                            toRemoveEnemy = enemy;
+                            logic.RemoveEnemyBullet(toRemoveEnemy.bullet);
+                        }
+                   
+                        //playerBullet = null;
                     }
                 });
                 if (playerBullet != null)
@@ -106,7 +115,7 @@
                 if (enemy.bullet == null)
                 {
                     // TODO continue with bullets
-                    enemy.EnemyShoot();
+                    enemy.EnemyShoot(model.player.CX);
                     logic.AddEnemyBullet(enemy.bullet);
                     return;
                 }
@@ -186,14 +195,18 @@
             if (model.player.CY > model.GameHeight)
             {
                 MessageBox.Show("Fail!");
-          
-                logic.RespawnPlayer();
                 logic.DecreasePlayerLife();
+                logic.RespawnPlayer();
+      
             }
             if (model.player.Lives < 0)
             {      
-                MessageBox.Show("You loose :( ");     
+                MessageBox.Show("You loose :( ");
+
+                
+                Window saveResultWindow = new SaveResultWindow(((FinalScoreViewModel)Window.GetWindow(this).DataContext), model.player.score.ToString());
                 Window.GetWindow(this).Close();
+                saveResultWindow.ShowDialog();
             }
             InvalidateVisual();
         }
@@ -204,8 +217,9 @@
             {
                 case Key.Right: this.logic.MovePlayer(Direction.Right); break;
                 case Key.Left: this.logic.MovePlayer(Direction.Left); break;
-                // case Key.Down: this.logic.PlayerShoot(); break;
+                case Key.Down: this.logic.PlayerShoot(); break;
                 case Key.Space: this.logic.RotateSreen(); break;
+                //case Key.S: this.logic.SaveGame(); break;
                 case Key.D: double cy = this.model.player.CY - GameModel.ZeroAxios;
                     MessageBox.Show(this.model.player.CX.ToString(), cy.ToString()); break; // dev
             }
