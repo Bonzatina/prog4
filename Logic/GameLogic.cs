@@ -274,5 +274,15 @@
             }
             return;
         }
+
+        public void SaveGame(string filename = "SaveGame.xml")
+        {
+            this.model.Save(filename);
+        }
+
+        public void LoadGame(string filename = "SaveGame.xml")
+        {
+            this.model.Save(filename);
+        }
     }
 }
