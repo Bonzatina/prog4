@@ -36,6 +36,9 @@
 
         private void Control_Loaded(object sender, RoutedEventArgs e)
         {
+            //FinalScoreViewModel dataCntx = (FinalScoreViewModel)Window.GetWindow(this).DataContext;
+            //Console.WriteLine(dataCntx.loadGame);
+
             this.model = new GameModel(this.ActualWidth, this.ActualHeight);
             this.logic = new GameLogic(this.model);
             this.renderer = new GameRenderer(this.model);
@@ -216,6 +219,7 @@
                 case Key.Left: this.logic.MovePlayer(Direction.Left); break;
                 case Key.Down: this.logic.PlayerShoot(); break;
                 case Key.Space: this.logic.RotateSreen(); break;
+                //case Key.S: this.logic.SaveGame(); break;
                 case Key.D: double cy = this.model.player.CY - GameModel.ZeroAxios;
                     MessageBox.Show(this.model.player.CX.ToString(), cy.ToString()); break; // dev
             }

@@ -37,7 +37,9 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
 
         private void LoadGame(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Sorry, not implemented yet");
+            FinalScoreObj.loadGame = true;
+            Window gameWindow = new MainWindow(FinalScoreObj);
+            gameWindow.ShowDialog();
         }
 
         private void ViewStatistics(object sender, RoutedEventArgs e)

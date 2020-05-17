@@ -47,6 +47,7 @@ namespace OENIK_PROG4_2020_1_A2ETR7_SCE1EH
 
     public class FinalScoreViewModel : ViewModelBase
     {
+        public bool loadGame { get; set; } = false;
         string finalScore;
         public string FinalScore
         {
