@@ -94,11 +94,11 @@ namespace Model
 
             // fill enemies ...
             List<Enemy> enemies1 = new List<Enemy>();
-            Geometry mediumEnemyShape1 = GameShapes.gameShapes["mediumEnemyShape"];
-            TransformGroup mediumEnemyShape1Transform = new TransformGroup();
-            mediumEnemyShape1Transform.Children.Add(new TranslateTransform(450, 40));
-            mediumEnemyShape1.Transform = mediumEnemyShape1Transform;
-            mediumEnemyShape1 = mediumEnemyShape1.GetFlattenedPathGeometry();
+            Geometry smallEnemyShape1 = GameShapes.gameShapes["smallEnemyShape"];
+            TransformGroup smallEnemyShape1Transform = new TransformGroup();
+            smallEnemyShape1Transform.Children.Add(new TranslateTransform(450, 40));
+            smallEnemyShape1.Transform = smallEnemyShape1Transform;
+            smallEnemyShape1 = smallEnemyShape1.GetFlattenedPathGeometry();
 
             //Geometry mediumEnemyShape2 = GameShapes.gameShapes["mediumEnemyShape"];
             //TransformGroup mediumEnemyShape2Transform = new TransformGroup();
@@ -106,7 +106,7 @@ namespace Model
             //mediumEnemyShape2.Transform = mediumEnemyShape2Transform;
             //mediumEnemyShape2 = mediumEnemyShape2.GetFlattenedPathGeometry();
 
-            enemies1.Add(new MediumEnemy(mediumEnemyShape1));
+            enemies1.Add(new SmallEnemy(smallEnemyShape1));
             //enemies1.Add(new MediumEnemy(mediumEnemyShape2));
 
           
@@ -136,12 +136,69 @@ namespace Model
                 new Point(330, 100),
                 new Point(500, 200),
             };
-            Point[] firstSlice2 = new Point[]{
-                new Point(480, 0),
-                new Point(650, 100),
+            Point[] thirdSlice2 = new Point[]{
+                new Point(580, 0),
+                new Point(750, 100),
             };
 
-            Point[][] grounds2 = new Point[][] { oneSlice2, secondSlice2, firstSlice2 };
+            Point[][] grounds2 = new Point[][] { oneSlice2, secondSlice2, thirdSlice2 };
+
+            List<SpecialItem> specialItems2 = new List<SpecialItem>();
+            Geometry spikesShape_2_1 = GameShapes.gameShapes["spikesShape"];
+            TransformGroup spikesShape_2_1_Tranform = new TransformGroup();
+            spikesShape_2_1_Tranform.Children.Add(new TranslateTransform(600, 230));
+            spikesShape_2_1_Tranform.Children.Add(new MatrixTransform(new Matrix(1, 0, 0, -1, 0, 0)));
+            spikesShape_2_1.Transform = spikesShape_2_1_Tranform;
+            spikesShape_2_1 = spikesShape_2_1.GetFlattenedPathGeometry(); ;
+
+            Geometry plusScoresShape2_1 = GameShapes.gameShapes["plusScoresShape"];
+            TransformGroup plusScoresShape2_1Transform = new TransformGroup();
+            plusScoresShape2_1Transform.Children.Add(new TranslateTransform(530, -175));
+            plusScoresShape2_1.Transform = plusScoresShape2_1Transform;
+            plusScoresShape2_1 = plusScoresShape2_1.GetFlattenedPathGeometry();
+
+            Geometry plusScoresShape2_2 = GameShapes.gameShapes["plusScoresShape"];
+            TransformGroup plusScoresShape2_2Transform = new TransformGroup();
+            plusScoresShape2_2Transform.Children.Add(new TranslateTransform(670, -90));
+            plusScoresShape2_2.Transform = plusScoresShape2_2Transform;
+            plusScoresShape2_2 = plusScoresShape2_2.GetFlattenedPathGeometry();
+
+            Geometry plusOneLiveShape_2_1 = GameShapes.gameShapes["plusOneLiveShape"];
+            TransformGroup plusOneLiveShape_2_1Transform = new TransformGroup();
+            plusOneLiveShape_2_1Transform.Children.Add(new TranslateTransform(635, 232));
+            plusOneLiveShape_2_1Transform.Children.Add(new MatrixTransform(new Matrix(1, 0, 0, -1, 0, 0)));
+            plusOneLiveShape_2_1.Transform = plusOneLiveShape_2_1Transform;
+            plusOneLiveShape_2_1 = plusOneLiveShape_2_1.GetFlattenedPathGeometry();
+
+            specialItems2.Add(new DecreaseHealthItem(1, Brushes.Red, new Pen(Brushes.Black, 2), spikesShape_2_1));
+            specialItems2.Add(new IncreasePlayerScoreItem(Brushes.Gold, new Pen(Brushes.Red, 2), plusScoresShape2_1));
+            specialItems2.Add(new IncreasePlayerScoreItem(Brushes.Gold, new Pen(Brushes.Red, 2), plusScoresShape2_2));
+            specialItems2.Add(new IncreaseHealthItem(1, Brushes.BlueViolet, new Pen(Brushes.Black, 2), plusOneLiveShape_2_1));
+
+            List<Enemy> enemies2 = new List<Enemy>();
+
+            Geometry smallEnemyShape_2_1 = GameShapes.gameShapes["smallEnemyShape"];
+            TransformGroup smallEnemyShape_2_1Transform = new TransformGroup();
+            smallEnemyShape_2_1Transform.Children.Add(new TranslateTransform(680, 65));
+            smallEnemyShape_2_1.Transform = smallEnemyShape_2_1Transform;
+            smallEnemyShape_2_1 = smallEnemyShape_2_1.GetFlattenedPathGeometry();
+
+            Geometry mediumEnemyShape2_1 = GameShapes.gameShapes["mediumEnemyShape"];
+            TransformGroup mediumEnemyShape2_1Transform = new TransformGroup();
+            mediumEnemyShape2_1Transform.Children.Add(new TranslateTransform(440, -225));
+            mediumEnemyShape2_1.Transform = mediumEnemyShape2_1Transform;
+            mediumEnemyShape2_1 = mediumEnemyShape2_1.GetFlattenedPathGeometry();
+
+            Geometry mediumEnemyShape2_2 = GameShapes.gameShapes["mediumEnemyShape"];
+            TransformGroup mediumEnemyShape2_2Transform = new TransformGroup();
+            mediumEnemyShape2_2Transform.Children.Add(new TranslateTransform(800, -225));
+            mediumEnemyShape2_2.Transform = mediumEnemyShape2_2Transform;
+            mediumEnemyShape2_2 = mediumEnemyShape2_2.GetFlattenedPathGeometry();
+
+            enemies2.Add(new SmallEnemy(smallEnemyShape_2_1));
+            enemies2.Add(new MediumEnemy(mediumEnemyShape2_1));
+            enemies2.Add(new MediumEnemy(mediumEnemyShape2_2));
+
 
             Geometry doorNextScreenShape2 = new LineGeometry(new Point(0, 0), new Point(0, -160))
                 .GetWidenedPathGeometry(new Pen(Brushes.Black, 2));
@@ -151,7 +208,7 @@ namespace Model
             doorNextScreenShape2 = doorNextScreenShape2.GetFlattenedPathGeometry();
             DoorNextScreen doorNextScreen2 = new DoorNextScreen("screen_3", Brushes.Black, new Pen(Brushes.Black, 5), doorNextScreenShape2);
 
-            screens.Add("screen_2", new Screen(new GroundLine(grounds2), doorNextScreen2));
+            screens.Add("screen_2", new Screen(new GroundLine(grounds2), doorNextScreen2, specialItems2, enemies2));
 
 
             // third screen
@@ -190,8 +247,14 @@ namespace Model
             //.GetWidenedPathGeometry(new Pen(Brushes.Black, 2));
             gameShapes.Add("wallShape", wallShape);
 
-            GeometryGroup mediumEnemyShape = new GeometryGroup();
-            mediumEnemyShape.Children.Add(new EllipseGeometry(new Rect(0, 0, 10, 50)));
+            GeometryGroup smallEnemyShape = new GeometryGroup();
+            smallEnemyShape.Children.Add(new EllipseGeometry(new Rect(0, 0, 10, 50)));
+            gameShapes.Add("smallEnemyShape", smallEnemyShape);
+
+
+            Geometry mediumEnemyShape =  Geometry.Combine(new EllipseGeometry(new Rect(0, 0, 30, 30)), new EllipseGeometry(new Rect(-1, 5, 20, 20)),
+                GeometryCombineMode.Exclude, null).GetFlattenedPathGeometry();
+
             gameShapes.Add("mediumEnemyShape", mediumEnemyShape);
 
             Geometry plusScoresShape = new RectangleGeometry(new Rect(0, 0, 10, 10));
